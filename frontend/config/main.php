@@ -7,11 +7,15 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-frontend',
+    'id' => 'english-tests-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'request' => [
+            'class' => 'common\components\lang\LangRequest'
+        ],
+
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -27,6 +31,19 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'class'=>'common\components\lang\LangUrlManager',
+            'rules'=>[
+                '/' => 'site/index',
+
+                '<controller:\w+>/<id:\d+>'=>'<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>'
+            ]
         ],
     ],
     'params' => $params,
