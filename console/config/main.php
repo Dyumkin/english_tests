@@ -13,6 +13,9 @@ return [
     'controllerNamespace' => 'console\controllers',
     'modules' => [
         'gii' => 'yii\gii\Module',
+        'user-management' => [
+            'class' => 'webvimark\modules\UserManagement\UserManagementModule',
+        ],
     ],
     'components' => [
         'log' => [
