@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7f616c8cd1800429e0e566fa721cef1a",
+    "hash": "a34ceba9a08478023a67ed0346562c8f",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -102,16 +102,16 @@
         },
         {
             "name": "bower-asset/jquery.inputmask",
-            "version": "3.1.57",
+            "version": "3.1.58",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobinHerbots/jquery.inputmask.git",
-                "reference": "d180082aa1ba98c85f85b2c4eebbfa195fd25613"
+                "reference": "8579f56b86f78accbaf03c28d44be35ca1e346a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/d180082aa1ba98c85f85b2c4eebbfa195fd25613",
-                "reference": "d180082aa1ba98c85f85b2c4eebbfa195fd25613",
+                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/8579f56b86f78accbaf03c28d44be35ca1e346a5",
+                "reference": "8579f56b86f78accbaf03c28d44be35ca1e346a5",
                 "shasum": ""
             },
             "require": {
@@ -147,7 +147,7 @@
                 "form",
                 "input",
                 "inputmask",
-                "jQuery",
+                "jquery",
                 "mask",
                 "plugins"
             ]
@@ -211,8 +211,7 @@
             },
             "license": [
                 "MIT"
-            ],
-            "time": "2015-01-22 20:06:42"
+            ]
         },
         {
             "name": "cebe/markdown",
@@ -630,12 +629,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "59b20b44ec8b0e96fa7ced928b8198ec59c31148"
+                "reference": "33a8047cf86d0918b7fe751246539a0be6dc6b27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/59b20b44ec8b0e96fa7ced928b8198ec59c31148",
-                "reference": "59b20b44ec8b0e96fa7ced928b8198ec59c31148",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/33a8047cf86d0918b7fe751246539a0be6dc6b27",
+                "reference": "33a8047cf86d0918b7fe751246539a0be6dc6b27",
                 "shasum": ""
             },
             "require": {
@@ -711,7 +710,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-01-26 22:57:45"
+            "time": "2015-01-29 13:44:05"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1160,12 +1159,18 @@
             "time": "2015-01-24 14:34:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": [
+
+    ],
     "prefer-stable": false,
     "platform": {
         "php": ">=5.4.0"
     },
-    "platform-dev": []
+    "platform-dev": [
+
+    ]
 }

@@ -18,6 +18,7 @@ use yii\filters\AccessControl;
  */
 class SiteController extends Controller
 {
+    public $layout = '@frontend/views/layouts/column2.php';
     /**
      * @inheritdoc
      */
