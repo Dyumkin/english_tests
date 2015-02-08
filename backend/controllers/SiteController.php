@@ -13,7 +13,6 @@ use yii\filters\VerbFilter;
 class SiteController extends Controller
 {
 
-    public $layout = '@backend/views/layouts/column2.php';
     /**
      * @inheritdoc
      */

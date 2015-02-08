@@ -4,8 +4,25 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a34ceba9a08478023a67ed0346562c8f",
+    "hash": "c9967eaff34463ce81ef568e957da60f",
     "packages": [
+        {
+            "name": "bower-asset/admin-lte",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/almasaeed2010/AdminLTE.git",
+                "reference": "a56e67be269c6b066f01591944e2dc2e1e9f0c7b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/almasaeed2010/AdminLTE/zipball/a56e67be269c6b066f01591944e2dc2e1e9f0c7b",
+                "reference": "a56e67be269c6b066f01591944e2dc2e1e9f0c7b",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "time": "2015-02-04 21:43:03"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.2",
@@ -58,6 +75,44 @@
             ]
         },
         {
+            "name": "bower-asset/font-awesome",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0",
+                "reference": "41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "./css/font-awesome.css",
+                    "./fonts/*"
+                ],
+                "bower-asset-ignore": [
+                    "*/.*",
+                    "*.json",
+                    "src",
+                    "*.yml",
+                    "Gemfile",
+                    "Gemfile.lock",
+                    "*.md"
+                ]
+            },
+            "license": [
+                "OFL-1.1",
+                "MIT",
+                "CC-BY-3.0"
+            ],
+            "description": "Font Awesome",
+            "time": "2015-01-22 18:09:42"
+        },
+        {
             "name": "bower-asset/jquery",
             "version": "2.1.3",
             "source": {
@@ -102,16 +157,16 @@
         },
         {
             "name": "bower-asset/jquery.inputmask",
-            "version": "3.1.58",
+            "version": "3.1.61",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobinHerbots/jquery.inputmask.git",
-                "reference": "8579f56b86f78accbaf03c28d44be35ca1e346a5"
+                "reference": "f2c086411d2557fc485c47afb3cecfa6c1de9ee2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/8579f56b86f78accbaf03c28d44be35ca1e346a5",
-                "reference": "8579f56b86f78accbaf03c28d44be35ca1e346a5",
+                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/f2c086411d2557fc485c47afb3cecfa6c1de9ee2",
+                "reference": "f2c086411d2557fc485c47afb3cecfa6c1de9ee2",
                 "shasum": ""
             },
             "require": {
@@ -448,12 +503,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/webvimark/components.git",
-                "reference": "80493fcc72f62c1a494ddbc0fad41cb8f72c25af"
+                "reference": "b748291eb2da676322047086e2af9cb11d1f19b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webvimark/components/zipball/80493fcc72f62c1a494ddbc0fad41cb8f72c25af",
-                "reference": "80493fcc72f62c1a494ddbc0fad41cb8f72c25af",
+                "url": "https://api.github.com/repos/webvimark/components/zipball/b748291eb2da676322047086e2af9cb11d1f19b4",
+                "reference": "b748291eb2da676322047086e2af9cb11d1f19b4",
                 "shasum": ""
             },
             "require": {
@@ -468,7 +523,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Components for yii 2",
-            "time": "2014-12-16 19:45:31"
+            "time": "2015-01-30 13:54:36"
         },
         {
             "name": "webvimark/date-range-picker",
@@ -596,12 +651,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/webvimark/user-management.git",
-                "reference": "d52a9ad9cf896bf20b7ec8ea01fe74fbf3161a7d"
+                "reference": "ba9ab2b5ed1564ef2218cedc7e422be256f5ea5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webvimark/user-management/zipball/d52a9ad9cf896bf20b7ec8ea01fe74fbf3161a7d",
-                "reference": "d52a9ad9cf896bf20b7ec8ea01fe74fbf3161a7d",
+                "url": "https://api.github.com/repos/webvimark/user-management/zipball/ba9ab2b5ed1564ef2218cedc7e422be256f5ea5e",
+                "reference": "ba9ab2b5ed1564ef2218cedc7e422be256f5ea5e",
                 "shasum": ""
             },
             "require": {
@@ -621,7 +676,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "User with improved RBAC",
-            "time": "2015-01-25 09:56:55"
+            "time": "2015-02-02 18:37:06"
         },
         {
             "name": "yiisoft/yii2",
@@ -629,12 +684,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "33a8047cf86d0918b7fe751246539a0be6dc6b27"
+                "reference": "b95c0de6191b2c438eecad4e6cffca0fe4c7c640"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/33a8047cf86d0918b7fe751246539a0be6dc6b27",
-                "reference": "33a8047cf86d0918b7fe751246539a0be6dc6b27",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/b95c0de6191b2c438eecad4e6cffca0fe4c7c640",
+                "reference": "b95c0de6191b2c438eecad4e6cffca0fe4c7c640",
                 "shasum": ""
             },
             "require": {
@@ -710,7 +765,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-01-29 13:44:05"
+            "time": "2015-02-05 14:24:17"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
