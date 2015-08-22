@@ -1,5 +1,5 @@
 <?php
-use webvimark\modules\UserManagement\components\GhostNav;
+//use webvimark\modules\UserManagement\components\GhostNav;
 
 ?>
 <aside class="left-side sidebar-offcanvas">
@@ -30,28 +30,7 @@ use webvimark\modules\UserManagement\components\GhostNav;
             </div>
         </form>
 
-        <?=
-        GhostNav::widget(
-            [
-                'encodeLabels' => false,
-                'options' => ['class' => 'sidebar-menu'],
-                'items' => [
-                    [
-                        'label' => '<span class="fa fa-angle-down"></span><span class="text-info">Admin Panel</span>',
-                        'url' => '#'
-                    ],
-                    ['label' => '<span class="fa fa-file-code-o"></span> Gii', 'url' => ['/gii']],
-                    ['label' => '<span class="fa fa-dashboard"></span> Debug', 'url' => ['/debug']],
 
-                    ['label' => '<i class="fa fa-file-code-o"></i> ' . 'Users', 'url' => ['/user-management/user/index']],
-                    ['label' => '<i class="fa fa-file-code-o"></i> ' . 'Roles', 'url' => ['/user-management/role/index']],
-                    ['label' => '<i class="fa fa-file-code-o"></i> ' . 'Permissions', 'url' => ['/user-management/permission/index']],
-                    ['label' => '<i class="fa fa-file-code-o"></i> ' . 'Permission groups', 'url' => ['/user-management/auth-item-group/index']],
-                    ['label' => '<i class="fa fa-file-code-o"></i> ' . 'Visit log', 'url' => ['/user-management/user-visit-log/index']],
-                ],
-            ]
-        );
-        ?>
 
 
 

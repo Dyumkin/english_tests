@@ -17,7 +17,7 @@ use webvimark\modules\UserManagement\UserManagementModule;
         <div class="col-sm-3">
             <?php
 
-            echo GhostMenu::widget([
+            /*echo GhostMenu::widget([
                 'encodeLabels'=>false,
                 'activateParents'=>true,
                 'items' => [
@@ -33,7 +33,7 @@ use webvimark\modules\UserManagement\UserManagementModule;
                         ],
                     ],
                 ],
-            ]);
+            ]);*/
             ?>
         </div>
 

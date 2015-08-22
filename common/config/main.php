@@ -2,8 +2,18 @@
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
+
+        'user' => [
+            'identityClass' => 'common\models\User',
+            'as ext' => 'common\behavior\UserBehavior',
+        ],
+
         'cache' => [
             'class' => 'yii\caching\FileCache',
+        ],
+
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
         ],
 
         'language' => 'ru-RU',
@@ -16,4 +26,32 @@ return [
             ],
         ]
     ],
+    'modules' => [
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            // you will configure your module inside this file
+            // or if need different configuration for frontend and backend you may
+            // configure in needed configs
+        ],
+
+        'admin' => [
+                'class' => 'mdm\admin\Module',
+                'controllerMap' => [
+                    'assignment' => [
+                        'class' => 'mdm\admin\controllers\AssignmentController',
+                        'userClassName' => 'common\models\User',
+                        'idField' => 'id', // id field of model User
+                    ]
+                ],
+        ]
+    ],
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            'admin/*', // add or remove allowed actions to this list
+            'debug/*',
+            'site/*'
+        ]
+    ],
+
 ];
