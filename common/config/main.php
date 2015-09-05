@@ -29,9 +29,12 @@ return [
     'modules' => [
         'user' => [
             'class' => 'dektrium\user\Module',
-            // you will configure your module inside this file
-            // or if need different configuration for frontend and backend you may
-            // configure in needed configs
+            'enableUnconfirmedLogin' => true,
+            'confirmWithin' => 21600,
+            'cost' => 12,
+            'admins' => ['admin'],
+            'urlPrefix' => '/',
+            'urlRules' => []
         ],
 
         'admin' => [
@@ -50,7 +53,8 @@ return [
         'allowActions' => [
             'admin/*', // add or remove allowed actions to this list
             'debug/*',
-            'site/*'
+            'site/*',
+            'user/*'
         ]
     ],
 
