@@ -13,21 +13,27 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class AppAsset extends AssetBundle
+class SmartAdminAsset extends AssetBundle
 {
     public $basePath = '@webroot';
 
     public $css = [
+        'css/smartadmin-production-plugins.min.css',
+        'css/smartadmin-production.min.css',
+        'css/smartadmin-skins.min.css',
+        'css/smartadmin-rtl.min.css'
     ];
 
     public $js = [
+        'js/app.min.js',
+        'js/app.config.js',
+        'js/notification/SmartNotification.min.js',
+        'js/smartwidgets/jarvis.widget.min.js',
 
     ];
 
     public $depends = [
-        'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\bootstrap\BootstrapPluginAsset',
-        'backend\assets\SmartAdminAsset',
     ];
 }
