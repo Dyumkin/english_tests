@@ -6,7 +6,7 @@ use backend\components\smartui\SmartUI;
 /* @var $content string */
 
 $bodyParams = $this->params['bodyParams']; // array like ["id"=>"extr-page", "class"=>"animated fadeInDown"]
-$assetsPath = Yii::$app->assetManager->basePath;
+$assetsPath = '';
 
 // register smartadmin UI plugins
 SmartUI::register('widget', 'backend\components\smartui\Widget');
@@ -22,7 +22,7 @@ backend\assets\AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
-    <html lang="<?= Yii::$app->language ?>">
+    <html lang="<?= Yii::$app->language ?>" id="extr-page">
     <head>
         <meta charset="<?= Yii::$app->charset ?>"/>
         <meta name="description" content="">
@@ -59,7 +59,7 @@ backend\assets\AppAsset::register($this);
               media="screen and (max-device-width: 320px)">
         <?php $this->head() ?>
     </head>
-    <body<?php echo implode(' ', array_map(function ($prop, $value) {
+    <body <?php echo implode(' ', array_map(function ($prop, $value) {
         return $prop . '="' . $value . '"';
     }, array_keys($bodyParams), $bodyParams));?>>
     <!-- POSSIBLE CLASSES: minified, fixed-ribbon, fixed-header, fixed-width

@@ -69,6 +69,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
+            Yii::$app->view->params['bodyParams'] = ["class"=>"animated fadeInDown"];
             return $this->render('login', [
                 'model' => $model,
             ]);

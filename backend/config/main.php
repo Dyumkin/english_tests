@@ -16,6 +16,10 @@ return [
             'class' => 'common\components\lang\LangRequest'
         ],
 
+        'user' => [
+            'loginUrl' => '/site/login'
+        ],
+
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -34,6 +38,7 @@ return [
             'class'=>'common\components\lang\LangUrlManager',
             'rules'=>[
                 '/' => 'site/index',
+                '/login' => 'site/login',
 
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',

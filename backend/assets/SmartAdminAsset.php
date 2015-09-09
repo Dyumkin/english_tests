@@ -1,18 +1,9 @@
 <?php
-/**
- * @link http://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
 
 namespace backend\assets;
 
 use yii\web\AssetBundle;
 
-/**
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
- */
 class SmartAdminAsset extends AssetBundle
 {
     public $basePath = '@webroot';
@@ -21,19 +12,30 @@ class SmartAdminAsset extends AssetBundle
         'css/smartadmin-production-plugins.min.css',
         'css/smartadmin-production.min.css',
         'css/smartadmin-skins.min.css',
-        'css/smartadmin-rtl.min.css'
+        'css/smartadmin-rtl.min.css',
     ];
 
     public $js = [
-        'js/app.min.js',
         'js/app.config.js',
-        'js/notification/SmartNotification.min.js',
-        'js/smartwidgets/jarvis.widget.min.js',
-
+        'js/app.min.js',
     ];
 
     public $depends = [
+        'yii\jui\JuiAsset',
+        'backend\assets\smartadmin\PaceAsset',
+        'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\bootstrap\BootstrapPluginAsset',
+        'backend\assets\smartadmin\FontAwesomeAsset',
+        //'backend\assets\smartadmin\jQueryUITouchPunchAsset',
+        'backend\assets\smartadmin\SmartNotificationAsset',
+        'backend\assets\smartadmin\JarvisWidgetAsset',
+        'backend\assets\smartadmin\jQueryEasyPieChartAsset',
+        'backend\assets\smartadmin\jQuerySparklineAsset',
+        'backend\assets\smartadmin\jQueryMaskedinputAsset',
+        'backend\assets\smartadmin\jQuerySelect2Asset',
+        'backend\assets\smartadmin\jQueryBootstrapSliderAsset',
+        'backend\assets\smartadmin\jQueryMbBrowserAsset',
+        'backend\assets\smartadmin\FastclickAsset',
     ];
 }

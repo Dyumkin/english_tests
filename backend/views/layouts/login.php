@@ -15,7 +15,7 @@
         <!-- END AJAX-DROPDOWN -->
     </div>
 
-    <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Need an account?</span> <a href="<?php echo APP_URL; ?>/register.php" class="btn btn-danger">Creat account</a> </span>
+    <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Need an account?</span> <a href="/register.php" class="btn btn-danger">Creat account</a> </span>
 
 </header>
 
@@ -119,41 +119,3 @@
 </div>
 <!-- END MAIN PANEL -->
 <!-- ==========================CONTENT ENDS HERE ========================== -->
-
-<script type="text/javascript">
-    runAllForms();
-
-    $(function() {
-        // Validation
-        $("#login-form").validate({
-            // Rules for form validation
-            rules : {
-                email : {
-                    required : true,
-                    email : true
-                },
-                password : {
-                    required : true,
-                    minlength : 3,
-                    maxlength : 20
-                }
-            },
-
-            // Messages for form validation
-            messages : {
-                email : {
-                    required : 'Please enter your email address',
-                    email : 'Please enter a VALID email address'
-                },
-                password : {
-                    required : 'Please enter your password'
-                }
-            },
-
-            // Do not change code below
-            errorPlacement : function(error, element) {
-                error.insertAfter(element.parent());
-            }
-        });
-    });
-</script>
