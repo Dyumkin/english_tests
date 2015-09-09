@@ -17,7 +17,7 @@ return [
         ],
 
         'user' => [
-            'loginUrl' => '/site/login'
+            'loginUrl' => '/login'
         ],
 
         'log' => [

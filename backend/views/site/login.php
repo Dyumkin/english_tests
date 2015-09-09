@@ -1,38 +1,43 @@
 <?php
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use backend\components\smartform\ActiveForm;
+use \backend\components\smartform\Html;
 
-/* @var $this yii\web\View */
-/* @var $form yii\widgets\ActiveForm */
-/* @var $model \common\models\LoginForm */
+/* @var $this \yii\web\View */
+/* @var $form backend\components\smartform\ActiveForm */
+/* @var $model backend\models\SignInForm */
 
 $this->title = 'Sign In';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="form-box" id="login-box">
 
-    <div class="header"><?= Html::encode($this->title) ?></div>
-    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-    <div class="body bg-gray">
-        <p>Please fill out the following fields to login:</p>
-        <?= $form->field($model, 'username') ?>
-        <?= $form->field($model, 'password')->passwordInput() ?>
-        <?= $form->field($model, 'rememberMe')->checkbox() ?>
-    </div>
-    <div class="footer">
+<?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+    <header>
+        Sign In
+    </header>
 
-        <?= Html::submitButton('Login', ['class' => 'btn bg-olive btn-block', 'name' => 'login-button']) ?>
+    <fieldset>
 
-        <p><a href="#">I forgot my password</a></p>
+        <section>
+            <?= $form->field($model, 'email')->textInput([
+                'tooltip' => 'Please enter email address/username',
+                'icon' => Html::ICON_FA_USER
+            ]) ?>
+        </section>
 
-    </div>
-    <?php ActiveForm::end(); ?>
-</div>
+        <section>
+            <?= $form->field($model, 'password')->passwordInput([
+                'tooltip' => '<i class="fa fa-lock txt-color-teal"></i> Enter your password',
+                'icon' => Html::ICON_FA_LOCK
+            ]) ?>
+            <div class="note">
+                <a href="/forgotpassword.php">Forgot password?</a>
+            </div>
+        </section>
 
-<div class="margin text-center">
-    <span>Sign in using social networks</span>
-    <br/>
-    <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
-    <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
-    <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
-</div>
+        <section>
+            <?= $form->field($model, 'rememberMe')->checkbox() ?>
+        </section>
+    </fieldset>
+    <footer>
+        <?= Html::submitButton('Sign in', ['class' => 'btn btn-primary']) ?>
+    </footer>
+<?php ActiveForm::end(); ?>
