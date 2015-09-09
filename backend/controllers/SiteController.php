@@ -4,7 +4,7 @@ namespace backend\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
-use common\models\LoginForm;
+use backend\models\SignInForm;
 use yii\filters\VerbFilter;
 
 /**
@@ -65,10 +65,11 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        $model = new SignInForm();
+        if ($model->load(Yii::$app->request->post()) && $model->signin()) {
             return $this->goBack();
         } else {
+            Yii::$app->view->params['bodyParams'] = ["class"=>"animated fadeInDown"];
             return $this->render('login', [
                 'model' => $model,
             ]);

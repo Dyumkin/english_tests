@@ -1,291 +1,214 @@
 <?php
-use backend\assets\AppAsset;
-use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-
 /* @var $this \yii\web\View */
-/* @var $content string */
-
-AppAsset::register($this);
+/* @var $assetsPath string */
 ?>
 
-<header class="main-header">
+    <!-- HEADER -->
+    <header id="header">
+    <div id="logo-group">
 
-<?= Html::a(Yii::$app->name, Yii::$app->homeUrl, ['class' => 'logo']) ?>
+        <!-- PLACE YOUR LOGO HERE -->
+        <span id="logo"> <img src="<?= $assetsPath; ?>/img/logo.png" alt="SmartAdmin"> </span>
+        <!-- END LOGO PLACEHOLDER -->
 
-<nav class="navbar navbar-static-top" role="navigation">
+        <!-- Note: The activity badge color changes when clicked and resets the number to 0
+        Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+        <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
 
-<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-    <span class="sr-only">Toggle navigation</span>
-</a>
+        <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
 
-<div class="navbar-custom-menu">
+        <!-- END AJAX-DROPDOWN -->
+    </div>
 
-<ul class="nav navbar-nav">
+    <!-- projects dropdown -->
+    <div class="project-context hidden-xs">
 
-<li class="dropdown messages-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-envelope"></i>
-        <span class="label label-success">4</span>
-    </a>
-    <ul class="dropdown-menu">
-        <li class="header">You have 4 messages</li>
-        <li>
-            <!-- inner menu: contains the actual data -->
-            <div class="slimScrollDiv">
-                <ul class="menu">
-                    <li><!-- start message -->
-                        <a href="#">
-                            <div class="pull-left">
-                                <img src="<?= $directoryAsset ?>/dist/img/avatar3.png" class="img-circle"
-                                     alt="User Image"/>
-                            </div>
-                            <h4>
-                                Support Team
-                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                        </a>
-                    </li>
-                    <!-- end message -->
+        <span class="label">Projects:</span>
+        <span id="project-selector" class="popover-trigger-element dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
+
+        <!-- Suggestion: populate this list with fetch and push technique -->
+        <ul class="dropdown-menu">
+            <li>
+                <a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Notes on pipeline upgradee</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Assesment Report for merchant account</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
+            </li>
+        </ul>
+        <!-- end dropdown-menu-->
+
+    </div>
+    <!-- end projects dropdown -->
+
+    <!-- pulled right: nav area -->
+    <div class="pull-right">
+
+        <!-- collapse menu button -->
+        <div id="hide-menu" class="btn-header pull-right">
+            <span> <a href="javascript:void(0);" title="Collapse Menu" data-action="toggleMenu"><i class="fa fa-reorder"></i></a> </span>
+        </div>
+        <!-- end collapse menu -->
+
+        <!-- #MOBILE -->
+        <!-- Top menu profile link : this shows only when top menu is active -->
+        <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+            <li class="">
+                <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
+                    <img src="<?= $assetsPath; ?>/img/avatars/sunny.png" alt="John Doe" class="online" />
+                </a>
+                <ul class="dropdown-menu pull-right">
                     <li>
-                        <a href="#">
-                            <div class="pull-left">
-                                <img src="<?= $directoryAsset ?>/dist/img/avatar2.png" class="img-circle"
-                                     alt="user image"/>
-                            </div>
-                            <h4>
-                                AdminLTE Design Team
-                                <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                        </a>
+                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
                     </li>
+                    <li class="divider"></li>
                     <li>
-                        <a href="#">
-                            <div class="pull-left">
-                                <img src="<?= $directoryAsset ?>/dist/img/avatar.png" class="img-circle"
-                                     alt="user image"/>
-                            </div>
-                            <h4>
-                                Developers
-                                <small><i class="fa fa-clock-o"></i> Today</small>
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                        </a>
+                        <a href="#ajax/profile.php" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
                     </li>
+                    <li class="divider"></li>
                     <li>
-                        <a href="#">
-                            <div class="pull-left">
-                                <img src="<?= $directoryAsset ?>/dist/img/avatar2.png" class="img-circle"
-                                     alt="user image"/>
-                            </div>
-                            <h4>
-                                Sales Department
-                                <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                        </a>
+                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
                     </li>
+                    <li class="divider"></li>
                     <li>
-                        <a href="#">
-                            <div class="pull-left">
-                                <img src="<?= $directoryAsset ?>/dist/img/avatar.png" class="img-circle"
-                                     alt="user image"/>
-                            </div>
-                            <h4>
-                                Reviewers
-                                <small><i class="fa fa-clock-o"></i> 2 days</small>
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                        </a>
+                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="login.php" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
                     </li>
                 </ul>
-                <div class="slimScrollBar"></div>
-                <div class="slimScrollRail"></div>
-            </div>
-        </li>
-        <li class="footer"><a href="#">See All Messages</a></li>
-    </ul>
-</li>
-<!-- Notifications: style can be found in dropdown.less -->
-<li class="dropdown notifications-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-warning"></i>
-        <span class="label label-warning">10</span>
-    </a>
-    <ul class="dropdown-menu">
-        <li class="header">You have 10 notifications</li>
-        <li>
-            <!-- inner menu: contains the actual data -->
-            <ul class="menu">
-                <li>
-                    <a href="#">
-                        <i class="ion ion-ios7-people info"></i> 5 new members joined today
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-warning danger"></i> Very long description here that may not fit into the page
-                        and may cause design problems
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-users warning"></i> 5 new members joined
-                    </a>
-                </li>
+            </li>
+        </ul>
 
-                <li>
-                    <a href="#">
-                        <i class="ion ion-ios7-cart success"></i> 25 sales made
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="ion ion-ios7-person danger"></i> You changed your username
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="footer"><a href="#">View all</a></li>
-    </ul>
-</li>
-<!-- Tasks: style can be found in dropdown.less -->
-<li class="dropdown tasks-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-tasks"></i>
-        <span class="label label-danger">9</span>
-    </a>
-    <ul class="dropdown-menu">
-        <li class="header">You have 9 tasks</li>
-        <li>
-            <!-- inner menu: contains the actual data -->
-            <ul class="menu">
-                <li><!-- Task item -->
-                    <a href="#">
-                        <h3>
-                            Design some buttons
-                            <small class="pull-right">20%</small>
-                        </h3>
-                        <div class="progress xs">
-                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">20% Complete</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- end task item -->
-                <li><!-- Task item -->
-                    <a href="#">
-                        <h3>
-                            Create a nice theme
-                            <small class="pull-right">40%</small>
-                        </h3>
-                        <div class="progress xs">
-                            <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
-                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">40% Complete</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- end task item -->
-                <li><!-- Task item -->
-                    <a href="#">
-                        <h3>
-                            Some task I need to do
-                            <small class="pull-right">60%</small>
-                        </h3>
-                        <div class="progress xs">
-                            <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
-                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">60% Complete</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- end task item -->
-                <li><!-- Task item -->
-                    <a href="#">
-                        <h3>
-                            Make beautiful transitions
-                            <small class="pull-right">80%</small>
-                        </h3>
-                        <div class="progress xs">
-                            <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
-                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">80% Complete</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- end task item -->
-            </ul>
-        </li>
-        <li class="footer">
-            <a href="#">View all tasks</a>
-        </li>
-    </ul>
-</li>
-<?php
-if (Yii::$app->user->isGuest) {
-    ?>
-    <li class="footer">
-        <?= Html::a('Login', ['/site/login']) ?>
-    </li>
-<?php
-} else {
-    ?>
-    <li class="dropdown user user-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="glyphicon glyphicon-user"></i>
-        <span><?= @Yii::$app->user->identity->username ?> <i class="caret"></i></span>
-    </a>
-    <ul class="dropdown-menu">
-        <!-- User image -->
-        <li class="user-header bg-light-blue">
-            <img src="<?= $directoryAsset ?>/dist/img/avatar5.png" class="img-circle" alt="User Image"/>
+        <!-- logout button -->
+        <div id="logout" class="btn-header transparent pull-right">
+            <span> <a href="/login.php" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+        </div>
+        <!-- end logout button -->
 
-            <p>
-                <?= @Yii::$app->user->identity->username ?> - Web Developer
-                <small>Member since Nov. 2012</small>
-            </p>
-        </li>
-        <!-- Menu Body -->
-        <li class="user-body">
-            <div class="col-xs-4 text-center">
-                <a href="#">Followers</a>
-            </div>
-            <div class="col-xs-4 text-center">
-                <a href="#">Sales</a>
-            </div>
-            <div class="col-xs-4 text-center">
-                <a href="#">Friends</a>
-            </div>
-        </li>
-        <!-- Menu Footer-->
-        <li class="user-footer">
-            <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
-            </div>
-            <div class="pull-right">
-                <?= Html::a(
-                    'Sign out',
-                    ['/site/logout'],
-                    ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
-                ) ?>
-            </div>
-        </li>
-    </ul>
-    </li><?php
-}
-?>
-<!-- User Account: style can be found in dropdown.less -->
+        <!-- search mobile button (this is hidden till mobile view port) -->
+        <div id="search-mobile" class="btn-header transparent pull-right">
+            <span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+        </div>
+        <!-- end search mobile button -->
 
-</ul>
-</div>
-</nav>
-</header>
+        <!-- input: search field -->
+        <form action="#ajax/search.php" class="header-search pull-right">
+            <input type="text" name="param" placeholder="Find reports and more" id="search-fld">
+            <button type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+            <a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+        </form>
+        <!-- end input: search field -->
+
+        <!-- fullscreen button -->
+        <div id="fullscreen" class="btn-header transparent pull-right">
+            <span> <a href="javascript:void(0);" title="Full Screen" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i></a> </span>
+        </div>
+        <!-- end fullscreen button -->
+
+        <!-- #Voice Command: Start Speech -->
+        <div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
+            <div>
+                <a href="javascript:void(0)" title="Voice Command" data-action="voiceCommand"><i class="fa fa-microphone"></i></a>
+                <div class="popover bottom"><div class="arrow"></div>
+                    <div class="popover-content">
+                        <h4 class="vc-title">Voice command activated <br><small>Please speak clearly into the mic</small></h4>
+                        <h4 class="vc-title-error text-center">
+                            <i class="fa fa-microphone-slash"></i> Voice command failed
+                            <br><small class="txt-color-red">Must <strong>"Allow"</strong> Microphone</small>
+                            <br><small class="txt-color-red">Must have <strong>Internet Connection</strong></small>
+                        </h4>
+                        <a href="javascript:void(0);" class="btn btn-success" onclick="commands.help()">See Commands</a>
+                        <a href="javascript:void(0);" class="btn bg-color-purple txt-color-white" onclick="$('#speech-btn .popover').fadeOut(50);">Close Popup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end voice command -->
+
+        <!-- multiple lang dropdown : find all flags in the flags page -->
+
+        <ul class="header-dropdown-list hidden-xs">
+            <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-us" alt="United States"> <span> English (US) </span> <i class="fa fa-angle-down"></i> </a>
+                <ul class="dropdown-menu pull-right">
+                    <li class="active">
+                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-us" alt="United States"> English (US)</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>>/img/blank.gif" class="flag flag-fr" alt="France"> Français</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>>/img/blank.gif" class="flag flag-es" alt="Spanish"> Español</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-de" alt="German"> Deutsch</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-jp" alt="Japan"> 日本語</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-cn" alt="China"> 中文</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-it" alt="Italy"> Italiano</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-pt" alt="Portugal"> Portugal</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-ru" alt="Russia"> Русский язык</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-kr" alt="Korea"> 한국어</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- end multiple lang -->
+
+    </div>
+    <!-- end pulled right: nav area -->
+
+    </header>
+    <!-- END HEADER -->
+
+    <!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
+    Note: These tiles are completely responsive,
+    you can add as many as you like
+    -->
+    <div id="shortcut">
+        <ul>
+            <li>
+                <a href="#ajax/inbox.php" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span> </a>
+            </li>
+            <li>
+                <a href="#ajax/calendar.php" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
+            </li>
+            <li>
+                <a href="#ajax/gmap-xml.php" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
+            </li>
+            <li>
+                <a href="#ajax/invoice.php" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span> </a>
+            </li>
+            <li>
+                <a href="#ajax/gallery.php" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
+            </li>
+            <li>
+                <a href="#ajax/profile.php" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
+            </li>
+        </ul>
+    </div>
+    <!-- END SHORTCUT AREA -->
+
