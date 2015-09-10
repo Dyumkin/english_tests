@@ -1,8 +1,8 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
-$this->registerJsFile('http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js');
+$this->title = 'Dashboard';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <!-- Small boxes (Stat box) -->

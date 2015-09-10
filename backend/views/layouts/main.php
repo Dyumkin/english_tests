@@ -5,7 +5,12 @@ use backend\components\smartui\SmartUI;
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-$bodyParams = $this->params['bodyParams']; // array like ["id"=>"extr-page", "class"=>"animated fadeInDown"]
+$bodyParams = [];
+$extrPage = '';
+if (Yii::$app->controller->action->id === 'login') {
+    $bodyParams = ['class' => 'animated fadeInDown']; // array like ["class"=>"animated fadeInDown"]todo change this
+    $extrPage = 'id="extr-page"';
+}
 $assetsPath = '';
 
 // register smartadmin UI plugins
@@ -22,7 +27,7 @@ backend\assets\AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
-    <html lang="<?= Yii::$app->language ?>" id="extr-page">
+    <html lang="<?= Yii::$app->language ?>" <?= $extrPage; ?>>
     <head>
         <meta charset="<?= Yii::$app->charset ?>"/>
         <meta name="description" content="">
@@ -68,7 +73,7 @@ backend\assets\AppAsset::register($this);
 
     <?php if (Yii::$app->controller->action->id === 'login'): ?>
         <?php echo $this->render(
-            'login',
+            'wrapper',
             ['content' => $content, 'assetsPath' => $assetsPath]
         ); ?>
     <?php else: ?>

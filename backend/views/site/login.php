@@ -18,7 +18,7 @@ $this->title = 'Sign In';
 
         <section>
             <?= $form->field($model, 'email')->textInput([
-                'tooltip' => 'Please enter email address/username',
+                'tooltip' => '<i class="fa fa-user txt-color-teal"></i> Please enter email address/username',
                 'icon' => Html::ICON_FA_USER
             ]) ?>
         </section>
@@ -28,14 +28,12 @@ $this->title = 'Sign In';
                 'tooltip' => '<i class="fa fa-lock txt-color-teal"></i> Enter your password',
                 'icon' => Html::ICON_FA_LOCK
             ]) ?>
-            <div class="note">
-                <a href="/forgotpassword.php">Forgot password?</a>
-            </div>
         </section>
 
         <section>
             <?= $form->field($model, 'rememberMe')->checkbox() ?>
         </section>
+
     </fieldset>
     <footer>
         <?= Html::submitButton('Sign in', ['class' => 'btn btn-primary']) ?>

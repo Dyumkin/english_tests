@@ -17,7 +17,7 @@ return [
         ],
 
         'user' => [
-            'loginUrl' => '/login'
+            'loginUrl' => '/login',
         ],
 
         'log' => [
@@ -39,6 +39,7 @@ return [
             'rules'=>[
                 '/' => 'site/index',
                 '/login' => 'site/login',
+                '/logout' => 'site/logout',
 
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',

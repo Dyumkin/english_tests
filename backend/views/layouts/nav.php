@@ -19,12 +19,12 @@ ex:
 $pageNav = [
     "dashboard" => [
         "title" => "Dashboard",
-        "url" => "ajax/dashboard.php",
+        "url" => "/",
         "icon" => "fa-home"
     ],
     "inbox" => [
         "title" => "Inbox",
-        "url" => "ajax/inbox.php",
+        "url" => "/inbox.php",
         "icon" => "fa-inbox",
         "label_htm" => '<span class="badge pull-right inbox-badge">14</span>',
     ]
@@ -39,7 +39,7 @@ $pageNav = [
 				<span> <!-- User image size is adjusted inside CSS, it should stay as is -->
 
 					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-						<img src="<?= $assetsPath; ?>/img/avatars/sunny.png" alt="me" class="online" />
+						<img src="/img/avatars/sunny.png" alt="me" class="online" />
 						<span>
 							john.doe
 						</span>

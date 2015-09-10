@@ -14,9 +14,6 @@
 
         <!-- END AJAX-DROPDOWN -->
     </div>
-
-    <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Need an account?</span> <a href="/register.php" class="btn btn-danger">Creat account</a> </span>
-
 </header>
 
 <div id="main" role="main">
@@ -40,42 +37,11 @@
                     <img src="<?= $assetsPath; ?>/img/demo/iphoneview.png" class="pull-right display-image" alt="" style="width:210px">
 
                 </div>
-
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
-                        <p>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
-                        </p>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <h5 class="about-heading">Not just your average template!</h5>
-                        <p>
-                            Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
-                        </p>
-                    </div>
-                </div>
-
             </div>
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
                 <div class="well no-padding">
                     <?= $content ?>
                 </div>
-
-                <h5 class="text-center"> - Or sign in using -</h5>
-
-                <ul class="list-inline text-center">
-                    <li>
-                        <a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
-                    </li>
-                </ul>
-
             </div>
         </div>
     </div>
