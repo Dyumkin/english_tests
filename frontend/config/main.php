@@ -16,15 +16,6 @@ return [
             'class' => 'common\components\lang\LangRequest'
         ],
 
-/*        'user' => [
-            'class' => 'webvimark\modules\UserManagement\components\UserConfig',
-
-            // Comment this if you don't want to record user logins
-            'on afterLogin' => function($event) {
-                \webvimark\modules\UserManagement\models\UserVisitLog::newVisitor($event->identity->id);
-            }
-        ],*/
-
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -52,22 +43,23 @@ return [
         ],
     ],
     'modules'=>[
-/*        'user-management' => [
-            'class' => 'webvimark\modules\UserManagement\UserManagementModule',
-
-            // Here you can set your handler to change layout for any controller or action
-            // Tip: you can use this event in any module
-            'on beforeAction'=>function(yii\base\ActionEvent $event) {
-                if ( $event->action->uniqueId == 'user-management/auth/login' )
-                {
-                    $event->action->controller->layout = 'loginLayout.php';
-                };
-            },
-        ],*/
         'user' => [
             // following line will restrict access to admin page
             'as frontend' => 'dektrium\user\filters\FrontendFilter',
         ],
     ],
+
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            'admin/*', // add or remove allowed actions to this list
+            'debug/*',
+            'site/*',
+            'user/*',
+            'gii/*',
+            'lang/*',
+        ]
+    ],
+
     'params' => $params,
 ];
