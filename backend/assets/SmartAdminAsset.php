@@ -37,5 +37,6 @@ class SmartAdminAsset extends AssetBundle
         'backend\assets\smartadmin\jQueryBootstrapSliderAsset',
         'backend\assets\smartadmin\jQueryMbBrowserAsset',
         'backend\assets\smartadmin\FastclickAsset',
+        'backend\assets\smartadmin\ChartAsset',
     ];
 }

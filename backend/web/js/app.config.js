@@ -35,7 +35,7 @@
  * GLOBAL: Your left nav in your app will no longer fire ajax calls, set 
  * it to false for HTML version
  */	
-	$.navAsAjax = true; 
+	$.navAsAjax = false;
 /*
  * GLOBAL: Sound Config (define sound path, enable or disable all sounds)
  */
@@ -89,7 +89,7 @@
  */	
 	localStorageJarvisWidgets = true,
 /*
- * Turn on/off sortable feature for JarvisWidgets 
+ * Turn off sortable feature for JarvisWidgets 
  */	
 	sortableJarvisWidgets = true,		
 /*
@@ -97,7 +97,7 @@
  * if you have too many widgets running at once 
  * (must have enableJarvisWidgets = true)
  */
-	enableMobileWidgets = false,	
+	enableMobileWidgets = true,
 /*
  * Turn on fast click for mobile devices
  * Enable this to activate fastclick plugin
@@ -109,7 +109,7 @@
  * Dependency: js/plugin/moment/moment.min.js 
  *             js/plugin/cssemotions/jquery.cssemoticons.min.js 
  *             js/smart-chat-ui/smart.chat.ui.js
- * (DO NOT CHANGE) 
+ * (DO NOT CHANGE BELOW) 
  */	
 	boxList = [],
 	showList = [],
@@ -208,7 +208,7 @@
  * 	Use localstorage to remember on/off (best used with HTML Version
  * 	when going from one page to the next)
  */	
-	voice_localStorage = false;
+	voice_localStorage = true;
 /*
  * Voice Commands
  * Defines voice command variables and functions
@@ -217,42 +217,42 @@
 	 		
 		var commands = {
 					
-			'show dashboard' : function() { $('nav a[href="ajax/dashboard.php"]').trigger("click"); },
-			'show inbox' : function() { $('nav a[href="ajax/inbox.php"]').trigger("click"); },
-			'show graphs' : function() { $('nav a[href="ajax/flot.php"]').trigger("click"); },
-			'show flotchart' : function() { $('nav a[href="ajax/flot.php"]').trigger("click"); },
-			'show morris chart' : function() { $('nav a[href="ajax/morris.php"]').trigger("click"); },
-			'show inline chart' : function() { $('nav a[href="ajax/inline-charts.php"]').trigger("click"); },
-			'show dygraphs' : function() { $('nav a[href="ajax/dygraphs.php"]').trigger("click"); },
-			'show tables' : function() { $('nav a[href="ajax/table.php"]').trigger("click"); },
-			'show data table' : function() { $('nav a[href="ajax/datatables.php"]').trigger("click"); },
-			'show jquery grid' : function() { $('nav a[href="ajax/jqgrid.php"]').trigger("click"); },
-			'show form' : function() { $('nav a[href="ajax/form-elements.php"]').trigger("click"); },
-			'show form layouts' : function() { $('nav a[href="ajax/form-templates.php"]').trigger("click"); },
-			'show form validation' : function() { $('nav a[href="ajax/validation.php"]').trigger("click"); },
-			'show form elements' : function() { $('nav a[href="ajax/bootstrap-forms.php"]').trigger("click"); },
-			'show form plugins' : function() { $('nav a[href="ajax/plugins.php"]').trigger("click"); },
-			'show form wizards' : function() { $('nav a[href="ajax/wizards.php"]').trigger("click"); },
-			'show bootstrap editor' : function() { $('nav a[href="ajax/other-editors.php"]').trigger("click"); },
-			'show dropzone' : function() { $('nav a[href="ajax/dropzone.php"]').trigger("click"); },
-			'show image cropping' : function() { $('nav a[href="ajax/image-editor.php"]').trigger("click"); },
-			'show general elements' : function() { $('nav a[href="ajax/general-elements.php"]').trigger("click"); },
-			'show buttons' : function() { $('nav a[href="ajax/buttons.php"]').trigger("click"); },
-			'show fontawesome' : function() { $('nav a[href="ajax/fa.php"]').trigger("click"); },
-			'show glyph icons' : function() { $('nav a[href="ajax/glyph.php"]').trigger("click"); },
-			'show flags' : function() { $('nav a[href="ajax/flags.php"]').trigger("click"); },
-			'show grid' : function() { $('nav a[href="ajax/grid.php"]').trigger("click"); },
-			'show tree view' : function() { $('nav a[href="ajax/treeview.php"]').trigger("click"); },
-			'show nestable lists' : function() { $('nav a[href="ajax/nestable-list.php"]').trigger("click"); },
-			'show jquery U I' : function() { $('nav a[href="ajax/jqui.php"]').trigger("click"); },
-			'show typography' : function() { $('nav a[href="ajax/typography.php"]').trigger("click"); },
-			'show calendar' : function() { $('nav a[href="ajax/calendar.php"]').trigger("click"); },
-			'show widgets' : function() { $('nav a[href="ajax/widgets.php"]').trigger("click"); },
-			'show gallery' : function() { $('nav a[href="ajax/gallery.php"]').trigger("click"); },
-			'show maps' : function() { $('nav a[href="ajax/gmap-xml.php"]').trigger("click"); },
-			'show pricing tables' : function() { $('nav a[href="ajax/pricing-table.php"]').trigger("click"); },
-			'show invoice' : function() { $('nav a[href="ajax/invoice.php"]').trigger("click"); },
-			'show search' : function() { $('nav a[href="ajax/search.php"]').trigger("click"); },
+			'show dashboard' : function() { $('nav a[href="dashboard.php"]').trigger("click"); },
+			'show inbox' : function() { $('nav a[href="inbox.php"]').trigger("click"); },
+			'show graphs' : function() { $('nav a[href="flot.php"]').trigger("click"); },
+			'show flotchart' : function() { $('nav a[href="flot.php"]').trigger("click"); },
+			'show morris chart' : function() { $('nav a[href="morris.php"]').trigger("click"); },
+			'show inline chart' : function() { $('nav a[href="inline-charts.php"]').trigger("click"); },
+			'show dygraphs' : function() { $('nav a[href="dygraphs.php"]').trigger("click"); },
+			'show tables' : function() { $('nav a[href="table.php"]').trigger("click"); },
+			'show data table' : function() { $('nav a[href="datatables.php"]').trigger("click"); },
+			'show jquery grid' : function() { $('nav a[href="jqgrid.php"]').trigger("click"); },
+			'show form' : function() { $('nav a[href="form-elements.php"]').trigger("click"); },
+			'show form layouts' : function() { $('nav a[href="form-templates.php"]').trigger("click"); },
+			'show form validation' : function() { $('nav a[href="validation.php"]').trigger("click"); },
+			'show form elements' : function() { $('nav a[href="bootstrap-forms.php"]').trigger("click"); },
+			'show form plugins' : function() { $('nav a[href="plugins.php"]').trigger("click"); },
+			'show form wizards' : function() { $('nav a[href="wizards.php"]').trigger("click"); },
+			'show bootstrap editor' : function() { $('nav a[href="other-editors.php"]').trigger("click"); },
+			'show dropzone' : function() { $('nav a[href="dropzone.php"]').trigger("click"); },
+			'show image cropping' : function() { $('nav a[href="image-editor.php"]').trigger("click"); },
+			'show general elements' : function() { $('nav a[href="general-elements.php"]').trigger("click"); },
+			'show buttons' : function() { $('nav a[href="buttons.php"]').trigger("click"); },
+			'show fontawesome' : function() { $('nav a[href="fa.php"]').trigger("click"); },
+			'show glyph icons' : function() { $('nav a[href="glyph.php"]').trigger("click"); },
+			'show flags' : function() { $('nav a[href="flags.php"]').trigger("click"); },
+			'show grid' : function() { $('nav a[href="grid.php"]').trigger("click"); },
+			'show tree view' : function() { $('nav a[href="treeview.php"]').trigger("click"); },
+			'show nestable lists' : function() { $('nav a[href="nestable-list.php"]').trigger("click"); },
+			'show jquery U I' : function() { $('nav a[href="jqui.php"]').trigger("click"); },
+			'show typography' : function() { $('nav a[href="typography.php"]').trigger("click"); },
+			'show calendar' : function() { $('nav a[href="calendar.php"]').trigger("click"); },
+			'show widgets' : function() { $('nav a[href="widgets.php"]').trigger("click"); },
+			'show gallery' : function() { $('nav a[href="gallery.php"]').trigger("click"); },
+			'show maps' : function() { $('nav a[href="gmap-xml.php"]').trigger("click"); },
+			'show pricing tables' : function() { $('nav a[href="pricing-table.php"]').trigger("click"); },
+			'show invoice' : function() { $('nav a[href="invoice.php"]').trigger("click"); },
+			'show search' : function() { $('nav a[href="search.php"]').trigger("click"); },
 			'go back' :  function() { history.back(1); }, 
 			'scroll up' : function () { $('html, body').animate({ scrollTop: 0 }, 100); },
 			'scroll down' : function () { $('html, body').animate({ scrollTop: $(document).height() }, 100);},

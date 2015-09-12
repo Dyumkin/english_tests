@@ -6,9 +6,16 @@
 		</span>
 
 		<!-- breadcrumb -->
-		<ol class="breadcrumb">
+
 			<!-- This is auto generated -->
-		</ol>
+            <?=
+        \yii\widgets\Breadcrumbs::widget(
+            [
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                'tag' => 'ol'
+            ]
+        ) ?>
+
 		<!-- end breadcrumb -->
 
 		<!-- You can also add more buttons to the

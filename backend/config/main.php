@@ -17,7 +17,7 @@ return [
         ],
 
         'user' => [
-            'loginUrl' => '/login'
+            'loginUrl' => '/login',
         ],
 
         'log' => [
@@ -39,6 +39,7 @@ return [
             'rules'=>[
                 '/' => 'site/index',
                 '/login' => 'site/login',
+                '/logout' => 'site/logout',
 
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
@@ -53,5 +54,18 @@ return [
             'admins' => ['Admin'],
         ],
     ],
+
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            'admin/*', // add or remove allowed actions to this list
+            'debug/*',
+            'site/*',
+            'user/*',
+
+            'lang/*',
+        ]
+    ],
+
     'params' => $params,
 ];

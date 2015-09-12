@@ -8,7 +8,7 @@
     <div id="logo-group">
 
         <!-- PLACE YOUR LOGO HERE -->
-        <span id="logo"> <img src="<?= $assetsPath; ?>/img/logo.png" alt="SmartAdmin"> </span>
+        <span id="logo"> <img src="/img/logo.png" alt="SmartAdmin"> </span>
         <!-- END LOGO PLACEHOLDER -->
 
         <!-- Note: The activity badge color changes when clicked and resets the number to 0
@@ -58,10 +58,10 @@
 
         <!-- #MOBILE -->
         <!-- Top menu profile link : this shows only when top menu is active -->
-        <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+        <!--<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
             <li class="">
                 <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-                    <img src="<?= $assetsPath; ?>/img/avatars/sunny.png" alt="John Doe" class="online" />
+                    <img src="/img/avatars/sunny.png" alt="John Doe" class="online" />
                 </a>
                 <ul class="dropdown-menu pull-right">
                     <li>
@@ -85,11 +85,17 @@
                     </li>
                 </ul>
             </li>
-        </ul>
+        </ul>-->
 
         <!-- logout button -->
         <div id="logout" class="btn-header transparent pull-right">
-            <span> <a href="/login.php" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+            <span> <!--<a href="/logout" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a>-->
+            <?= \yii\helpers\Html::a('<i class="fa fa-sign-out"></i>', 'site/logout', [
+                'data-action' => 'userLogout',
+                'data-logout-msg' => 'You can improve your security further after logging out by closing this opened browser',
+                'title' => 'Sign Out'
+            ]); ?>
+            </span>
         </div>
         <!-- end logout button -->
 
@@ -100,7 +106,7 @@
         <!-- end search mobile button -->
 
         <!-- input: search field -->
-        <form action="#ajax/search.php" class="header-search pull-right">
+        <form action="#" class="header-search pull-right">
             <input type="text" name="param" placeholder="Find reports and more" id="search-fld">
             <button type="submit">
                 <i class="fa fa-search"></i>
@@ -116,7 +122,7 @@
         <!-- end fullscreen button -->
 
         <!-- #Voice Command: Start Speech -->
-        <div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
+        <!--<div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
             <div>
                 <a href="javascript:void(0)" title="Voice Command" data-action="voiceCommand"><i class="fa fa-microphone"></i></a>
                 <div class="popover bottom"><div class="arrow"></div>
@@ -132,7 +138,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- end voice command -->
 
         <!-- multiple lang dropdown : find all flags in the flags page -->
@@ -140,37 +146,13 @@
         <ul class="header-dropdown-list hidden-xs">
             <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-us" alt="United States"> <span> English (US) </span> <i class="fa fa-angle-down"></i> </a>
+                    <img src="/img/blank.gif" class="flag flag-us" alt="United States"> <span> English (US) </span> <i class="fa fa-angle-down"></i> </a>
                 <ul class="dropdown-menu pull-right">
                     <li class="active">
-                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-us" alt="United States"> English (US)</a>
+                        <a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-us" alt="United States"> English (US)</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>>/img/blank.gif" class="flag flag-fr" alt="France"> Français</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>>/img/blank.gif" class="flag flag-es" alt="Spanish"> Español</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-de" alt="German"> Deutsch</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-jp" alt="Japan"> 日本語</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-cn" alt="China"> 中文</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-it" alt="Italy"> Italiano</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-pt" alt="Portugal"> Portugal</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-ru" alt="Russia"> Русский язык</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img src="<?= $assetsPath; ?>/img/blank.gif" class="flag flag-kr" alt="Korea"> 한국어</a>
+                        <a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-ru" alt="Russia"> Русский язык</a>
                     </li>
                 </ul>
             </li>

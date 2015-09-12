@@ -1,5 +1,6 @@
 <?php
 use backend\components\smartui\SmartUI;
+use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 
@@ -17,16 +18,28 @@ ex:
 
 */
 $pageNav = [
-    "dashboard" => [
-        "title" => "Dashboard",
-        "url" => "ajax/dashboard.php",
-        "icon" => "fa-home"
+    'dashboard' => [
+        'title' => 'Dashboard',
+        'url' => Url::toRoute('site/index'),
+        'icon' => 'fa-home'
     ],
-    "inbox" => [
-        "title" => "Inbox",
-        "url" => "ajax/inbox.php",
-        "icon" => "fa-inbox",
-        "label_htm" => '<span class="badge pull-right inbox-badge">14</span>',
+    'inbox' => [
+        'title' => 'Inbox',
+        'url' => '/inbox.php',
+        'icon' => 'fa-inbox',
+        'label_htm' => '<span class="badge pull-right inbox-badge">14</span>',
+    ],
+    'options' => [
+        'title' => 'Options',
+        //'url' => Url::toRoute('site/index'),
+        'url_target' => '_blank',
+        'icon' => 'fa-cogs',
+        'sub' => [
+            [
+                'title' => 'Languages',
+                'url' => Url::toRoute('lang/index')
+            ]
+        ]
     ]
 ];
 ?>
@@ -39,7 +52,7 @@ $pageNav = [
 				<span> <!-- User image size is adjusted inside CSS, it should stay as is -->
 
 					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-						<img src="<?= $assetsPath; ?>/img/avatars/sunny.png" alt="me" class="online" />
+						<img src="/img/avatars/sunny.png" alt="me" class="online" />
 						<span>
 							john.doe
 						</span>
