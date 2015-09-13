@@ -103,4 +103,16 @@ class Lang extends ActiveRecord
             }
         }
     }
+
+    /**
+     * @return string todo change logic
+     */
+    public function getFlag()
+    {
+        if ($this->url == 'en') {
+            return 'us';
+        }
+
+        return $this->url;
+    }
 }

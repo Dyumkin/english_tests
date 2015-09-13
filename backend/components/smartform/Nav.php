@@ -115,7 +115,8 @@ class Nav extends \yii\base\Widget
         $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
         $label = $encodeLabel ? Html::encode($item['label']) : $item['label'];
         $label = Html::tag('span', $label, ['class' => 'menu-item-parent']);
-        $label = isset($item['icon']) ? $item['icon'] . ' ' . $label : $label;
+        $icon = isset($item['icon']) ? Html::icon($item['icon'], ['fw' => true, 'size' => 'fa-lg']) : '';
+        $label = isset($icon) ? $icon . ' ' . $label : $label;
         $label = isset($item['badge']) ? $label . ' ' . $item['badge'] : $label;
         $options = ArrayHelper::getValue($item, 'options', []);
         $items = ArrayHelper::getValue($item, 'items');

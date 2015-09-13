@@ -46,6 +46,9 @@ return [
                         'idField' => 'id', // id field of model User
                     ]
                 ],
-        ]
+        ],
+        'rbac' => [
+            'class' => 'dektrium\rbac\Module',
+        ],
     ],
 ];

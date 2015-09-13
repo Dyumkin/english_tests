@@ -5,7 +5,7 @@
 			<span class="txt-color-white"><span class="hidden-xs">Web Application Framework</span> © 2014-2015</span>
 		</div>
 
-		<div class="col-xs-6 col-sm-6 text-right hidden-xs">
+		<!--<div class="col-xs-6 col-sm-6 text-right hidden-xs">
 			<div class="txt-color-white inline-block">
 				<div class="btn-group dropup">
 					<button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
@@ -47,7 +47,7 @@
 					</ul>
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</div>
 </div>
 <!-- END PAGE FOOTER -->

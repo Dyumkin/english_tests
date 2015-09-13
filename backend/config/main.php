@@ -32,6 +32,7 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -45,6 +46,15 @@ return [
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>'
             ]
+        ],
+
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@dektrium/user/views' => '@backend/views/user',
+                    '@dektrium/rbac/views' => '@backend/views/rbac',
+                ],
+            ],
         ],
     ],
     'modules'=>[
@@ -62,7 +72,7 @@ return [
             'debug/*',
             'site/*',
             'user/*',
-
+            'rbac/*',
             'lang/*',
         ]
     ],

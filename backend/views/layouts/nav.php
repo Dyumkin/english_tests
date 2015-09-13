@@ -1,6 +1,5 @@
 <?php
-use backend\components\smartui\SmartUI;
-use yii\helpers\Url;
+use backend\components\smartform\Nav;
 
 /* @var $this \yii\web\View */
 
@@ -18,26 +17,52 @@ ex:
 
 */
 $pageNav = [
-    'dashboard' => [
-        'title' => 'Dashboard',
-        'url' => Url::toRoute('site/index'),
-        'icon' => 'fa-home'
-    ],
-    'inbox' => [
-        'title' => 'Inbox',
-        'url' => '/inbox.php',
-        'icon' => 'fa-inbox',
-        'label_htm' => '<span class="badge pull-right inbox-badge">14</span>',
-    ],
-    'options' => [
-        'title' => 'Options',
-        //'url' => Url::toRoute('site/index'),
-        'url_target' => '_blank',
-        'icon' => 'fa-cogs',
-        'sub' => [
-            [
-                'title' => 'Languages',
-                'url' => Url::toRoute('lang/index')
+    'items' => [
+        'dashboard' => [
+            'label' => 'Dashboard',
+            'url' => ['/site/index'],
+            'icon' => 'fa-home'
+        ],
+        'inbox' => [
+            'label' => 'Inbox (None)',
+            'url' => '/inbox.php',
+            'icon' => 'fa-inbox',
+        ],
+        'user' => [
+            'label' => 'Users',
+            'url' => ['/user/admin'],
+            'icon' => 'fa-users',
+        ],
+        'auth' => [
+            'label' => 'Access Control (Beta)',
+            'icon' => 'fa-shield',
+            'items' => [
+                [
+                    'label' => 'Route',
+                    'url' => ['/admin/route']
+                ],
+                [
+                    'label' => 'Permission',
+                    'url' => ['/admin/permission']
+                ],
+                [
+                    'label' => 'Role',
+                    'url' => ['/admin/role']
+                ],
+                [
+                    'label' => 'Assignment',
+                    'url' => ['/admin/assignment']
+                ],
+            ]
+        ],
+        'options' => [
+            'label' => 'Options',
+            'icon' => 'fa-cogs',
+            'items' => [
+                [
+                    'label' => 'Languages',
+                    'url' => ['/lang/index']
+                ]
             ]
         ]
     ]
@@ -52,9 +77,16 @@ $pageNav = [
 				<span> <!-- User image size is adjusted inside CSS, it should stay as is -->
 
 					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-						<img src="/img/avatars/sunny.png" alt="me" class="online" />
+                        <?= \cebe\gravatar\Gravatar::widget([
+                            'email' => Yii::$app->user->identity->profile->gravatar_email,
+                            'options' => [
+                                'alt' => 'me',
+                                'class' => 'online'
+                            ],
+                            'size' => 50
+                        ]) ?>
 						<span>
-							john.doe
+							<?= Yii::$app->user->identity->getUserName(); ?>
 						</span>
 						<i class="fa fa-angle-down"></i>
 					</a>
@@ -75,10 +107,7 @@ $pageNav = [
 				traditional hre="" links. See documentation for details.
 				-->
 
-				<?php
-					$ui = new SmartUI();
-					$ui->create_nav($pageNav)->print_html();
-				?>
+				<?= Nav::widget($pageNav); ?>
 
 			</nav>
 			<span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>

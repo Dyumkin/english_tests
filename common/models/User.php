@@ -156,4 +156,11 @@ class User extends \dektrium\user\models\User
     {
         $this->password_reset_token = null;
     }
+
+    /**
+     * @return string Profile name or username
+     */
+    public function getUserName() {
+        return !empty($this->profile->name) ? $this->profile->name : $this->username;
+    }
 }
