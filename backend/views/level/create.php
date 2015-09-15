@@ -3,17 +3,14 @@
 use backend\components\smartform\Html;
 use backend\components\smartform\Jarvis;
 
+
 /* @var $this yii\web\View */
-/* @var $model common\models\Lang */
+/* @var $model common\models\Level */
 
-$this->title = Yii::t('app', 'Update Language: ', [
-    'modelClass' => 'Lang',
-]) . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Languages'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->title = Yii::t('app', 'Create Level');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Levels'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <!-- row -->
 <div class="row">
     <article class="col-sm-12">
@@ -24,12 +21,12 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
             'fullscreenbutton' => false,
             'editbutton' => false,
             'sortable' => false,
-            'header' => 'Update',
+            'noPadding' => true,
+            'header' => 'Create',
             'icon' => Html::icon(Html::ICON_FA_EDIT),
             'body'   => $this->render('_form', [
                 'model' => $model,
-            ]),
-            'footer' => Html::submitButton(Yii::t('app', 'Update'), ['class' => 'btn btn-success']),
+            ])
         ]); ?>
     </article>
 </div>

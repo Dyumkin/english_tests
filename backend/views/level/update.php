@@ -4,12 +4,12 @@ use backend\components\smartform\Html;
 use backend\components\smartform\Jarvis;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Lang */
+/* @var $model common\models\Level */
 
-$this->title = Yii::t('app', 'Update Language: ', [
-    'modelClass' => 'Lang',
+$this->title = Yii::t('app', 'Update {modelClass}: ', [
+    'modelClass' => 'Level',
 ]) . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Languages'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Levels'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
@@ -28,8 +28,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
             'icon' => Html::icon(Html::ICON_FA_EDIT),
             'body'   => $this->render('_form', [
                 'model' => $model,
-            ]),
-            'footer' => Html::submitButton(Yii::t('app', 'Update'), ['class' => 'btn btn-success']),
+            ])
         ]); ?>
     </article>
 </div>

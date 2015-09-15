@@ -74,6 +74,8 @@ return [
             'user/*',
             'rbac/*',
             'lang/*',
+            'gii/*',
+            'level/*',
         ]
     ],
 

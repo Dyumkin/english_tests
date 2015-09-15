@@ -16,7 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <article class="col-sm-12">
         <!-- new widget -->
         <?= Jarvis::widget([
+            'togglebutton' => false,
+            'deletebutton' => false,
+            'fullscreenbutton' => false,
             'editbutton' => false,
+            'sortable' => false,
             'header' => 'Create',
             'icon' => Html::icon(Html::ICON_FA_EDIT),
             'body'   => $this->render('_form', [
