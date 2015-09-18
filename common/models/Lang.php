@@ -70,6 +70,9 @@ class Lang extends ActiveRecord
     }
 
 
+    /**
+     * @return Lang|null
+     */
     static function getCurrent()
     {
         if( self::$current === null ){
@@ -85,11 +88,18 @@ class Lang extends ActiveRecord
         Yii::$app->language = self::$current->local;
     }
 
+    /**
+     * @return Lang|null
+     */
     static function getDefaultLang()
     {
         return Lang::find()->where('`default` = :default', [':default' => 1])->one();
     }
 
+    /**
+     * @param string $url
+     * @return Lang|null
+     */
     static function getLangByUrl($url = null)
     {
         if ($url === null) {

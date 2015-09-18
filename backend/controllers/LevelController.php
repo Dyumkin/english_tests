@@ -2,8 +2,11 @@
 
 namespace backend\controllers;
 
+use common\models\Lang;
+use common\models\LevelI18n;
 use Yii;
 use common\models\Level;
+use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -61,12 +64,26 @@ class LevelController extends Controller
     public function actionCreate()
     {
         $model = new Level();
+        $modelI18ns = [];
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        /** @var Lang $lang */
+        foreach (Lang::find()->all() as $lang) {
+            $modelI18ns[] = new LevelI18n(['lang_id' => $lang->id]);
+        }
+
+        if (Model::loadMultiple($modelI18ns, Yii::$app->request->post()) && Model::validateMultiple($modelI18ns)) {
+            $model->setLevelI18ns($modelI18ns);
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                Yii::$app->session->setFlash('danger', Yii::t('app', 'BACKEND_FLASH_FAIL_ADMIN_CREATE'));
+                return $this->refresh();
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'modelI18ns' => $modelI18ns
             ]);
         }
     }

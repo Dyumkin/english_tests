@@ -6,11 +6,13 @@ use backend\components\smartform\Jarvis;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Level */
+/* @var $modelI18ns common\models\LevelI18n[] */
 
 $this->title = Yii::t('app', 'Create Level');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Levels'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <!-- row -->
 <div class="row">
     <article class="col-sm-12">
@@ -21,11 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'fullscreenbutton' => false,
             'editbutton' => false,
             'sortable' => false,
-            'noPadding' => true,
+            'colorbutton' => false,
             'header' => 'Create',
             'icon' => Html::icon(Html::ICON_FA_EDIT),
             'body'   => $this->render('_form', [
-                'model' => $model,
+                'model' => $model, 'modelI18ns' => $modelI18ns
             ])
         ]); ?>
     </article>
