@@ -5,7 +5,6 @@ use backend\widgets\Alert;
 /* @var $content string */
 ?>
 
-<?= Alert::widget(); ?>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <h1 class="page-title txt-color-blueDark">
@@ -20,6 +19,7 @@ use backend\widgets\Alert;
     </div>
 </div>
 
+<?= Alert::widget(); ?>
 <section id="widget-grid">
     <?= $content; ?>
 </section>

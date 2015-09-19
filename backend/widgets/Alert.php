@@ -24,7 +24,8 @@ use \yii\bootstrap\Widget;
  * \Yii::$app->getSession()->setFlash('error', ['Error 1', 'Error 2']);
  * ```
  *
- * @author Evgeniy Tkachenko <et.coder@gmail.com>
+ * if isset class "error-summary", alert icon cannot set.
+ *
  */
 class Alert extends Widget
 {
@@ -34,7 +35,7 @@ class Alert extends Widget
      * - $key is the name of the session flash variable
      * - $value is the array:
      *       - class of alert type (i.e. danger, success, info, warning)
-     *       - icon for alert AdminLTE
+     *       - icon for alert
      */
     public $alertTypes = [
         'error' => [
@@ -85,8 +86,13 @@ class Alert extends Widget
                     $this->options['class'] = $this->alertTypes[$type]['class'] . $appendCss;
                     $this->options['id'] = $this->getId() . '-' . $type;
 
+                    $icon = $this->alertTypes[$type]['icon'];
+                    if (stristr($message, 'error-summary')) {
+                        $icon = '';
+                    }
+
                     echo BootstrapAlert::widget([
-                            'body' => $message . $this->alertTypes[$type]['icon'],
+                            'body' => $message . $icon,
                             'closeButton' => $this->closeButton,
                             'options' => $this->options,
                         ]);

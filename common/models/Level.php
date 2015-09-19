@@ -13,11 +13,10 @@ use yii\db\ActiveRecord;
  * @property integer $date_create
  *
  * @property LevelI18n[] $levelI18ns
+ * @property LevelI18n $content
  */
 class Level extends ActiveRecord
 {
-    /** @var LevelI18n $content */
-    public $content;
 
     /**
      * @inheritdoc
@@ -69,22 +68,6 @@ class Level extends ActiveRecord
         return $this->hasMany(LevelI18n::className(), ['level_id' => 'id']);
     }
 
-    /*public function loadLevelI18ns($levelI18ns)
-    {
-        $levels = [];
-        foreach($levelI18ns as $lang => $data)
-        {
-            if(isset($data['id']) && !empty($data['id']))
-            {
-                $level = LevelI18n::findOne($data['id']);
-                $level->setAttributes($data);
-            } else {
-                $level = new LevelI18n($data);
-            }
-            $levels[] = $level;
-        }
-        $this->setLevelI18ns($levels);
-    }*/
 
     public function setLevelI18ns($levels)
     {

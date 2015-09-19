@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use backend\components\smartform\Html;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -120,9 +121,15 @@ class Lang extends ActiveRecord
     public function getFlag()
     {
         if ($this->url == 'en') {
-            return 'us';
+            return 'gb';
         }
 
         return $this->url;
+    }
+
+    public function getFlagImg()
+    {
+        $flag = $this->getFlag();
+        return Html::img('/img/blank.gif', ['class' => 'flag flag-' . $flag, 'alt' => $this->name]);
     }
 }

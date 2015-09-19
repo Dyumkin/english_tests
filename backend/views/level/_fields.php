@@ -12,7 +12,7 @@ use backend\components\smartform\Html;
     <div class="row">
         <?= $form->field($model, '[' . $i . ']lang_id')->hiddenInput()->label('') ?>
         <section class="col col-4">
-            <?= $form->field($model, '[' . $i . ']name')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, '[' . $i . ']name')->textInput(['maxlength' => true])->error(['encode' => false]) ?>
         </section>
     </div>
 

@@ -65,27 +65,28 @@ class LevelController extends Controller
     {
         $model = new Level();
         $modelI18ns = [];
+        $hasError = false;
 
         /** @var Lang $lang */
         foreach (Lang::find()->all() as $lang) {
             $modelI18ns[] = new LevelI18n(['lang_id' => $lang->id]);
         }
 
-        if (Model::loadMultiple($modelI18ns, Yii::$app->request->post()) && Model::validateMultiple($modelI18ns)) {
-            $model->setLevelI18ns($modelI18ns);
-
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            } else {
-                Yii::$app->session->setFlash('danger', Yii::t('app', 'BACKEND_FLASH_FAIL_ADMIN_CREATE'));
-                return $this->refresh();
+        if (Model::loadMultiple($modelI18ns, Yii::$app->request->post())) {
+            if (Model::validateMultiple($modelI18ns)) {
+                $model->setLevelI18ns($modelI18ns);
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-                'modelI18ns' => $modelI18ns
-            ]);
+            $hasError = true;
         }
+
+        return $this->render('create', [
+            'model' => $model,
+            'modelI18ns' => $modelI18ns,
+            'hasError' => $hasError
+        ]);
     }
 
     /**
@@ -97,14 +98,25 @@ class LevelController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $modelI18ns = $model->levelI18ns;
+        $hasError = false;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+        if (Model::loadMultiple($modelI18ns, Yii::$app->request->post())) {
+            if (Model::validateMultiple($modelI18ns)) {
+                $model->setLevelI18ns($modelI18ns);
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
+            $hasError = true;
         }
+
+        return $this->render('create', [
+            'model' => $model,
+            'modelI18ns' => $modelI18ns,
+            'hasError' => $hasError
+        ]);
+
     }
 
     /**

@@ -7,12 +7,19 @@ use backend\components\smartform\ActiveForm;
 /* @var $model common\models\Level */
 /* @var $modelI18ns common\models\LevelI18n[] */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $hasError bool */
 
 $items = [];
 
 $form = ActiveForm::begin([
     'id' => 'level',
+    'enableClientValidation' => false,
+    'encodeErrorSummary' => false
 ]);
+
+if ($hasError) {
+    Yii::$app->session->setFlash('error', $form->errorSummary($modelI18ns));
+}
 
 foreach ($modelI18ns as $i => $modelI18n) {
     $items['items'][] = [
@@ -22,9 +29,13 @@ foreach ($modelI18ns as $i => $modelI18n) {
         ]),
     ];
 }
+
+$items['navType'] = 'nav-tabs bordered';
+
 ?>
 
-<?= \yii\bootstrap\Tabs::widget($items); ?>
+<div class="tabbable">
+    <?= \yii\bootstrap\Tabs::widget($items); ?>
+</div>
 
-
-<?php ActiveForm::end(); ?>
+<? ActiveForm::end(); ?>

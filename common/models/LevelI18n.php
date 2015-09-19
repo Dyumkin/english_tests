@@ -67,4 +67,10 @@ class LevelI18n extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Lang::className(), ['id' => 'lang_id']);
     }
+
+    public function addError($attribute, $error = '')
+    {
+        $errorWithFlag = $this->lang->getFlagImg() . ' ' . $error;
+        parent::addError($attribute, $errorWithFlag);
+    }
 }

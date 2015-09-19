@@ -6,6 +6,7 @@ use backend\components\smartform\Jarvis;
 /* @var $this yii\web\View */
 /* @var $model common\models\Level */
 /* @var $modelI18ns common\models\LevelI18n[] */
+/* @var $hasError bool */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
     'modelClass' => 'Level',
@@ -29,7 +30,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
             'header' => 'Create',
             'icon' => Html::icon(Html::ICON_FA_EDIT),
             'body'   => $this->render('_form', [
-                'model' => $model, 'modelI18ns' => $modelI18ns
+                'model' => $model, 'modelI18ns' => $modelI18ns, 'hasError' => $hasError
             ])
         ]); ?>
     </article>
