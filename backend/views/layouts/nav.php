@@ -56,9 +56,14 @@ $pageNav = [
             ]
         ],
         'level' => [
-            'label' => 'Level',
+            'label' => 'Levels',
             'url' => ['/level/index'],
             'icon' => 'fa-level-up',
+        ],
+        'domain' => [
+            'label' => 'Domains',
+            'url' => ['/domain/index'],
+            'icon' => 'fa-cubes'
         ],
         'options' => [
             'label' => 'Options',

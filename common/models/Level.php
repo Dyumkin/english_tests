@@ -14,6 +14,7 @@ use yii\db\ActiveRecord;
  *
  * @property LevelI18n[] $levelI18ns
  * @property LevelI18n $content
+ * @property Domain[] $domains
  */
 class Level extends ActiveRecord
 {
@@ -63,6 +64,14 @@ class Level extends ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getDomains()
+    {
+        return $this->hasMany(Domain::className(), ['level_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getLevelI18ns()
     {
         return $this->hasMany(LevelI18n::className(), ['level_id' => 'id']);
@@ -93,5 +102,22 @@ class Level extends ActiveRecord
     {
         $lang_id = ($lang_id === null)? Lang::getCurrent()->id: $lang_id;
         return $this->hasOne(LevelI18n::className(), ['level_id' => 'id'])->where('lang_id = :lang_id', [':lang_id' => $lang_id]);
+    }
+
+    /**
+     * @return array for drop down [id => name]
+     */
+    public static function getLevels()
+    {
+        $levels = Level::find()->all();
+
+        $data = [];
+        /** @var Level $level */
+        foreach ($levels as $level)
+        {
+            $data[$level->id] = $level->content->name;
+        }
+
+        return $data;
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-use backend\components\smartform\Html;
 use backend\components\smartform\ActiveForm;
 
 /* @var $this yii\web\View */

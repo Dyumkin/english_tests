@@ -2,10 +2,10 @@
 
 namespace backend\controllers;
 
+use common\models\DomainI18n;
 use common\models\Lang;
-use common\models\LevelI18n;
 use Yii;
-use common\models\Level;
+use common\models\Domain;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -13,9 +13,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LevelController implements the CRUD actions for Level model.
+ * DomainController implements the CRUD actions for Domain model.
  */
-class LevelController extends Controller
+class DomainController extends Controller
 {
     public function behaviors()
     {
@@ -30,13 +30,13 @@ class LevelController extends Controller
     }
 
     /**
-     * Lists all Level models.
+     * Lists all Domain models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Level::find(),
+            'query' => Domain::find(),
         ]);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class LevelController extends Controller
     }
 
     /**
-     * Displays a single Level model.
+     * Displays a single Domain model.
      * @param integer $id
      * @return mixed
      */
@@ -57,25 +57,25 @@ class LevelController extends Controller
     }
 
     /**
-     * Creates a new Level model.
+     * Creates a new Domain model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Level();
+        $model = new Domain();
         $modelI18ns = [];
         $hasError = false;
 
         /** @var Lang $lang */
         foreach (Lang::find()->all() as $lang) {
-            $modelI18ns[] = new LevelI18n(['lang_id' => $lang->id]);
+            $modelI18ns[] = new DomainI18n(['lang_id' => $lang->id]);
         }
 
-        if (Model::loadMultiple($modelI18ns, Yii::$app->request->post())) {
-            if (Model::validateMultiple($modelI18ns)) {
-                $model->setLevelI18ns($modelI18ns);
-                if ($model->save()) {
+        if (Model::loadMultiple($modelI18ns, Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
+            if (Model::validateMultiple($modelI18ns) && $model->validate()) {
+                $model->setDomainI18ns($modelI18ns);
+                if ($model->save(false)) {
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
             }
@@ -90,7 +90,7 @@ class LevelController extends Controller
     }
 
     /**
-     * Updates an existing Level model.
+     * Updates an existing Domain model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -98,12 +98,12 @@ class LevelController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $modelI18ns = $model->levelI18ns;
+        $modelI18ns = $model->domainI18ns;
         $hasError = false;
 
-        if (Model::loadMultiple($modelI18ns, Yii::$app->request->post())) {
+        if (Model::loadMultiple($modelI18ns, Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
             if (Model::validateMultiple($modelI18ns)) {
-                $model->setLevelI18ns($modelI18ns);
+                $model->setDomainI18ns($modelI18ns);
                 if ($model->save()) {
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
@@ -116,11 +116,10 @@ class LevelController extends Controller
             'modelI18ns' => $modelI18ns,
             'hasError' => $hasError
         ]);
-
     }
 
     /**
-     * Deletes an existing Level model.
+     * Deletes an existing Domain model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -132,22 +131,22 @@ class LevelController extends Controller
         if (!$model->domains) {
             $model->delete();
         } else {
-            Yii::$app->session->setFlash('error', Yii::t('app', 'Cannot delete, some domain use this level'));
+            Yii::$app->session->setFlash('error', Yii::t('app', 'Cannot delete, this domain is used'));
         }
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Level model based on its primary key value.
+     * Finds the Domain model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Level the loaded model
+     * @return Domain the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Level::findOne($id)) !== null) {
+        if (($model = Domain::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -3,27 +3,29 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "level_i18n".
+ * This is the model class for table "domain_i18n".
  *
  * @property integer $id
- * @property integer $level_id
+ * @property integer $domain_id
  * @property integer $lang_id
  * @property string $name
  * @property string $description
  *
- * @property Level $level
+ * @property Domain $domain
  * @property Lang $lang
  */
-class LevelI18n extends \yii\db\ActiveRecord
+class DomainI18n extends ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'level_i18n';
+        return 'domain_i18n';
     }
 
     /**
@@ -33,10 +35,10 @@ class LevelI18n extends \yii\db\ActiveRecord
     {
         return [
             [['lang_id', 'name'], 'required'],
-            [['level_id', 'lang_id'], 'integer'],
+            [['domain_id', 'lang_id'], 'integer'],
             [['description'], 'string'],
             [['name'], 'string', 'max' => 255],
-            [['level_id'], 'exist', 'skipOnError' => true, 'targetClass' => Level::className(), 'targetAttribute' => ['level_id' => 'id']],
+            [['domain_id'], 'exist', 'skipOnError' => true, 'targetClass' => Domain::className(), 'targetAttribute' => ['domain_id' => 'id']],
             [['lang_id'], 'exist', 'skipOnError' => true, 'targetClass' => Lang::className(), 'targetAttribute' => ['lang_id' => 'id']],
         ];
     }
@@ -47,7 +49,7 @@ class LevelI18n extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'name' => Yii::t('app', 'Level'),
+            'name' => Yii::t('app', 'Domain'),
             'description' => Yii::t('app', 'Description'),
         ];
     }
@@ -55,9 +57,9 @@ class LevelI18n extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLevel()
+    public function getDomain()
     {
-        return $this->hasOne(Level::className(), ['id' => 'level_id']);
+        return $this->hasOne(Domain::className(), ['id' => 'domain_id']);
     }
 
     /**

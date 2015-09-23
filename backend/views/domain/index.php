@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <article class="col-sm-12">
         <!-- new widget -->
         <?= Jarvis::widget([
-            'header' => 'Settings',
-            'icon' => Html::icon(Html::ICON_FA_LEVEL_UP),
+            'header' => 'Domains',
+            'icon' => Html::icon(Html::ICON_FA_CUBES),
             'togglebutton' => false,
             'deletebutton' => false,
             'fullscreenbutton' => false,
@@ -28,13 +28,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
                     'content.name',
-                    'date_update:datetime',
-                    'date_create:datetime',
+                    [
+                        'attribute' => 'type',
+                        'value' => function($model) {
+                            return \common\models\Domain::getDomainsData()[$model->id];
+                        },
+                    ],
+                    'timer',
+                    'level.content.name',
+                    'update_at:datetime',
+                    'create_at:datetime',
 
                     ['class' => 'yii\grid\ActionColumn'],
                 ],
             ]),
-            'footer' => Html::a(Yii::t('app', 'Create Level'), ['create'], ['class' => 'btn btn-success']),
+            'footer' => Html::a(Yii::t('app', 'Create Domain'), ['create'], ['class' => 'btn btn-success']),
         ]); ?>
     </article>
 </div>

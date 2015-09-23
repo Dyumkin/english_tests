@@ -92,7 +92,7 @@ class Alert extends Widget
                     }
 
                     echo BootstrapAlert::widget([
-                            'body' => $message . $icon,
+                            'body' => $icon . ' ' . $message,
                             'closeButton' => $this->closeButton,
                             'options' => $this->options,
                         ]);
