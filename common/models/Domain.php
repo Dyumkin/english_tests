@@ -26,24 +26,8 @@ use yii\db\ActiveRecord;
  */
 class Domain extends ActiveRecord
 {
-
-    const TYPE_MULTIPLE_CHOICE = 'multiple_choice';
-    const TYPE_ALTERNATIVE_CHOICE = 'alternative_choice';
-    const TYPE_MATCHING = 'matching';
-    const TYPE_REARRANGEMENT = 'rearrangement';
-    const TYPE_FREE_PRESENTATION = 'free_presentation';
-    const TYPE_ADDITION = 'addition';
-    const TYPE_CLOZE_TEST = 'cloze_test';
-
-    public static function getTypes ()
-    {
-        return [
-            self::TYPE_MULTIPLE_CHOICE => Yii::t('app', 'Multiple Choice'),
-            self::TYPE_ALTERNATIVE_CHOICE => Yii::t('app', 'Alternative Choice'),
-            self::TYPE_MATCHING => Yii::t('app', 'Matching'),
-            self::TYPE_REARRANGEMENT => Yii::t('app', 'Rearrangement'),
-        ];
-    }
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 0;
 
     /**
      * @inheritdoc
@@ -155,17 +139,23 @@ class Domain extends ActiveRecord
     }
 
     /**
+     * @param bool $filter use for grid filter
      * @return array for drop down [id => name]
      */
-    public static function getDomainsData()
+    public static function getDomainsData($filter = false)
     {
         $domains = Domain::find()->all();
+        $data = [];
+        if (!$filter) {
+            $data = ['' => ''];
+        }
 
-        $data = ['' => ''];
         /** @var Domain $domain */
         foreach ($domains as $domain)
         {
-            $data[$domain->id] = $domain->content->name;
+            if ($domain->status == self::STATUS_ACTIVE) {
+                $data[$domain->id] = $domain->content->name;
+            }
         }
 
         return $data;

@@ -3,6 +3,7 @@
 use backend\components\smartform\Html;
 use backend\components\smartform\ActiveForm;
 use common\models\Domain;
+use common\models\question\Question;
 use common\models\Level;
 
 /* @var $this yii\web\View */
@@ -51,7 +52,7 @@ $items['navType'] = 'nav-tabs bordered';
 <fieldset>
     <div class="row">
         <section class="col col-3">
-            <?= $form->field($model, 'type')->dropDownList(Domain::getTypes()) ?>
+            <?= $form->field($model, 'type')->dropDownList(Question::getTypes()) ?>
         </section>
 
         <section class="col col-3">

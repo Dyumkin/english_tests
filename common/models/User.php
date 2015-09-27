@@ -9,22 +9,6 @@ use yii\web\IdentityInterface;
 
 class User extends \dektrium\user\models\User
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
-
-
-
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
-
-
 
     /**
      * @inheritdoc

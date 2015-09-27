@@ -65,6 +65,11 @@ $pageNav = [
             'url' => ['/domain/index'],
             'icon' => 'fa-cubes'
         ],
+        'question' => [
+            'label' => 'Questions',
+            'url' => ['/question/index'],
+            'icon' => 'fa-question-circle'
+        ],
         'options' => [
             'label' => 'Options',
             'icon' => 'fa-cogs',

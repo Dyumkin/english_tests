@@ -41,6 +41,7 @@ return [
                 '/' => 'site/index',
                 '/login' => 'site/login',
                 '/logout' => 'site/logout',
+                'question/create/<type>' => 'question/create',
 
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
@@ -76,7 +77,8 @@ return [
             'lang/*',
             'gii/*',
             'level/*',
-            'domain/*'
+            'domain/*',
+            'question/*'
         ]
     ],
 

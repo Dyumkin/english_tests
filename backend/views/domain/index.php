@@ -28,12 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
                     'content.name',
-                    [
-                        'attribute' => 'type',
-                        'value' => function($model) {
-                            return \common\models\Domain::getDomainsData()[$model->id];
-                        },
-                    ],
                     'timer',
                     'level.content.name',
                     'update_at:datetime',
