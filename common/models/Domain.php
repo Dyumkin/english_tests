@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
 use yii\db\ActiveRecord;
 
 /**
@@ -17,10 +18,14 @@ use yii\db\ActiveRecord;
  * @property integer $status
  * @property integer $is_trial
  * @property integer $timer
+ * @property integer $created_by
+ * @property integer $updated_by
  *
  * @property Domain $domain
  * @property Domain[] $domains
  * @property Level $level
+ * @property User $createdBy
+ * @property User $updatedBy
  * @property DomainI18n[] $domainI18ns
  * @property DomainI18n $content
  */
@@ -28,6 +33,14 @@ class Domain extends ActiveRecord
 {
     const STATUS_ACTIVE = 1;
     const STATUS_INACTIVE = 0;
+
+    const PERMISSION_CREATE = 'createDomain';
+    const PERMISSION_VIEW = 'viewDomain';
+    const PERMISSION_VIEW_OWN = 'viewOwnDomain';
+    const PERMISSION_EDIT = 'editDomain';
+    const PERMISSION_EDIT_OWN = 'editOwnDomain';
+    const PERMISSION_DELETE = 'deleteDomain';
+    const PERMISSION_DELETE_OWN = 'deleteOwnDomain';
 
     /**
      * @inheritdoc
@@ -43,11 +56,13 @@ class Domain extends ActiveRecord
     public function rules()
     {
         return [
-            [['update_at', 'create_at', 'status', 'is_trial', 'timer'], 'integer'],
+            [['update_at', 'create_at', 'status', 'is_trial', 'timer','created_by', 'updated_by'], 'integer'],
             [['type', 'level_id', 'timer'], 'required'],
             [['type'], 'string', 'max' => 255],
             [['domain_id'], 'exist', 'skipOnError' => true, 'targetClass' => Domain::className(), 'targetAttribute' => ['domain_id' => 'id']],
             [['level_id'], 'exist', 'skipOnError' => true, 'targetClass' => Level::className(), 'targetAttribute' => ['level_id' => 'id']],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['updated_by' => 'id']],
         ];
     }
 
@@ -65,6 +80,8 @@ class Domain extends ActiveRecord
             'status' => Yii::t('app', 'Active'),
             'is_trial' => Yii::t('app', 'Is Trial'),
             'timer' => Yii::t('app', 'Timer'),
+            'created_by' => Yii::t('app', 'Created By'),
+            'updated_by' => Yii::t('app', 'Updated By'),
         ];
     }
 
@@ -77,6 +94,9 @@ class Domain extends ActiveRecord
                     ActiveRecord::EVENT_BEFORE_INSERT => ['create_at', 'update_at'],
                     ActiveRecord::EVENT_BEFORE_UPDATE => ['update_at'],
                 ],
+            ],
+            'author' => [
+                'class' => BlameableBehavior::className()
             ],
         ];
     }
@@ -111,6 +131,22 @@ class Domain extends ActiveRecord
     public function getDomainI18ns()
     {
         return $this->hasMany(DomainI18n::className(), ['domain_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUpdatedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'updated_by']);
     }
 
     public function setDomainI18ns($domains)

@@ -3,12 +3,20 @@ namespace common\models;
 
 use Yii;
 use yii\base\NotSupportedException;
-use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
-use yii\web\IdentityInterface;
 
+/**
+ * Class User
+ * @package common\models
+ * @property integer $role
+ */
 class User extends \dektrium\user\models\User
 {
+
+    const ROLE_ADMIN = 'admin';
+    const ROLE_USER = 'user';
+    const ROLE_GUEST = 'guest';
+    const ROLE_UNCONFIRMED = 'unconfirmed';
+    const ROLE_CLIENT = 'client';
 
     /**
      * @inheritdoc
@@ -51,7 +59,7 @@ class User extends \dektrium\user\models\User
 
         return static::findOne([
             'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
+            //'status' => self::STATUS_ACTIVE,
         ]);
     }
 
@@ -146,5 +154,25 @@ class User extends \dektrium\user\models\User
      */
     public function getUserName() {
         return !empty($this->profile->name) ? $this->profile->name : $this->username;
+    }
+
+    /**
+     * @param string $roleName
+     * @return bool
+     */
+    public function saveRole($roleName)
+    {
+        $auth = Yii::$app->authManager;
+        $role = $auth->getRole($roleName);
+        $auth->revokeAll($this->id);
+        $auth->assign($role, $this->id);
+
+        $this->role = $roleName;
+        return $this->save(true, ['role']);
+    }
+
+    public static function getDefaultRole()
+    {
+        return Yii::$app->params['user.defaultRole'];
     }
 }

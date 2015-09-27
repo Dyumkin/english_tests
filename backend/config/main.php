@@ -17,6 +17,8 @@ return [
         ],
 
         'user' => [
+            'identityClass' => 'common\models\User',
+            'as ext' => 'common\behavior\UserBehavior',
             'loginUrl' => '/login',
         ],
 
@@ -63,6 +65,10 @@ return [
             // following line will restrict access to admin page
             'as backend' => 'dektrium\user\filters\BackendFilter',
             'admins' => ['Admin'],
+        ],
+
+        'rbac' => [
+            'class' => 'dektrium\rbac\Module',
         ],
     ],
 

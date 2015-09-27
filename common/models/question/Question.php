@@ -37,6 +37,14 @@ class Question extends ActiveRecord
     const TYPE_ADDITION = 'addition';
     const TYPE_CLOZE_TEST = 'cloze_test';
 
+    const PERMISSION_CREATE = 'createQuestion';
+    const PERMISSION_VIEW = 'viewQuestion';
+    const PERMISSION_VIEW_OWN = 'viewOwnQuestion';
+    const PERMISSION_EDIT = 'editQuestion';
+    const PERMISSION_EDIT_OWN = 'editOwnQuestion';
+    const PERMISSION_DELETE = 'deleteQuestion';
+    const PERMISSION_DELETE_OWN = 'deleteOwnQuestion';
+
     public static function getTypes ()
     {
         return [
@@ -142,11 +150,7 @@ class Question extends ActiveRecord
                 ],
             ],
             'author' => [
-                'class' => BlameableBehavior::className(),
-                'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_by', 'updated_by'],
-                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_by'],
-                ]
+                'class' => BlameableBehavior::className()
             ],
             'type' => [
                 'class' => QuestionTypeBehavior::className(),

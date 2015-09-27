@@ -3,17 +3,14 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
 
-        'user' => [
-            'identityClass' => 'common\models\User',
-            'as ext' => 'common\behavior\UserBehavior',
-        ],
-
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
 
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
+            //'cache' => 'cache',
+            'defaultRoles' => ['guest']
         ],
 
         'language' => 'ru-RU',
@@ -46,9 +43,6 @@ return [
                         'idField' => 'id', // id field of model User
                     ]
                 ],
-        ],
-        'rbac' => [
-            'class' => 'dektrium\rbac\Module',
         ],
     ],
 ];
