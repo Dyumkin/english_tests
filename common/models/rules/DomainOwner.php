@@ -17,6 +17,6 @@ class DomainOwner extends Rule
      */
     public function execute($userId, $item, $params)
     {
-        return isset($params['domain']) ? $params['domain']->created_by == $userId : false;
+        return isset($params['model']) ? $params['model']->created_by == $userId : false;
     }
 }

@@ -151,8 +151,8 @@ class RbacController extends Controller
         ]);
 
         $this->applyRolePermissions(User::ROLE_CLIENT, [
-            $viewDomain,
             $createDomain,
+            $viewOwnDomain,
             $editOwnDomain,
             $deleteOwnDomain,
         ]);
@@ -223,8 +223,8 @@ class RbacController extends Controller
         ]);
 
         $this->applyRolePermissions(User::ROLE_CLIENT, [
-            $viewLevel,
             $createLevel,
+            $viewOwnLevel,
             $editOwnLevel,
             $deleteOwnLevel,
         ]);
@@ -295,8 +295,8 @@ class RbacController extends Controller
         ]);
 
         $this->applyRolePermissions(User::ROLE_CLIENT, [
-            $viewQuestion,
             $createQuestion,
+            $viewOwnQuestion,
             $editOwnQuestion,
             $deleteOwnQuestion,
         ]);

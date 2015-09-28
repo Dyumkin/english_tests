@@ -2,12 +2,14 @@
 
 namespace backend\controllers;
 
+use common\filters\AccessRule;
 use common\models\DomainI18n;
 use common\models\Lang;
 use Yii;
 use common\models\Domain;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +22,40 @@ class DomainController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig' => ['class' => AccessRule::className()],
+                'rules' => [
+                    [
+                        'actions' => ['index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['create'],
+                        'allow' => true,
+                        'roles' => [Domain::PERMISSION_CREATE],
+                    ],
+                    [
+                        'actions' => ['view'],
+                        'allow' => true,
+                        'roles' => [Domain::PERMISSION_VIEW, Domain::PERMISSION_VIEW_OWN],
+                        'modelClass' => Domain::className()
+                    ],
+                    [
+                        'actions' => ['update'],
+                        'allow' => true,
+                        'roles' => [Domain::PERMISSION_EDIT, Domain::PERMISSION_EDIT_OWN],
+                        'modelClass' => Domain::className()
+                    ],
+                    [
+                        'actions' => ['delete'],
+                        'allow' => true,
+                        'roles' => [Domain::PERMISSION_DELETE, Domain::PERMISSION_DELETE_OWN],
+                        'modelClass' => Domain::className()
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

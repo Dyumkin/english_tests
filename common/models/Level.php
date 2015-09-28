@@ -145,7 +145,7 @@ class Level extends ActiveRecord
      */
     public static function getLevels()
     {
-        $levels = Level::find()->all();
+        $levels = Level::find()->where(['created_by' => Yii::$app->user->id])->each();
 
         $data = [];
         /** @var Level $level */

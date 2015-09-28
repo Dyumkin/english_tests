@@ -180,7 +180,7 @@ class Domain extends ActiveRecord
      */
     public static function getDomainsData($filter = false)
     {
-        $domains = Domain::find()->all();
+        $domains = Domain::find()->where(['created_by' => Yii::$app->user->id])->each();
         $data = [];
         if (!$filter) {
             $data = ['' => ''];

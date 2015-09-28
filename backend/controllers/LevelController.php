@@ -2,12 +2,14 @@
 
 namespace backend\controllers;
 
+use common\filters\AccessRule;
 use common\models\Lang;
 use common\models\LevelI18n;
 use Yii;
 use common\models\Level;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +22,40 @@ class LevelController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig' => ['class' => AccessRule::className()],
+                'rules' => [
+                    [
+                        'actions' => ['index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['create'],
+                        'allow' => true,
+                        'roles' => [Level::PERMISSION_CREATE],
+                    ],
+                    [
+                        'actions' => ['view'],
+                        'allow' => true,
+                        'roles' => [Level::PERMISSION_VIEW, Level::PERMISSION_VIEW_OWN],
+                        'modelClass' => Level::className()
+                    ],
+                    [
+                        'actions' => ['update'],
+                        'allow' => true,
+                        'roles' => [Level::PERMISSION_EDIT, Level::PERMISSION_EDIT_OWN],
+                        'modelClass' => Level::className()
+                    ],
+                    [
+                        'actions' => ['delete'],
+                        'allow' => true,
+                        'roles' => [Level::PERMISSION_DELETE, Level::PERMISSION_DELETE_OWN],
+                        'modelClass' => Level::className()
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

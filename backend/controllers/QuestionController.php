@@ -2,9 +2,11 @@
 
 namespace backend\controllers;
 
+use common\filters\AccessRule;
 use Yii;
 use common\models\question\Question;
 use common\models\search\QuestionSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -19,6 +21,40 @@ class QuestionController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig' => ['class' => AccessRule::className()],
+                'rules' => [
+                    [
+                        'actions' => ['index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['create'],
+                        'allow' => true,
+                        'roles' => [Question::PERMISSION_CREATE],
+                    ],
+                    [
+                        'actions' => ['view'],
+                        'allow' => true,
+                        'roles' => [Question::PERMISSION_VIEW, Question::PERMISSION_VIEW_OWN],
+                        'modelClass' => Question::className()
+                    ],
+                    [
+                        'actions' => ['update'],
+                        'allow' => true,
+                        'roles' => [Question::PERMISSION_EDIT, Question::PERMISSION_EDIT_OWN],
+                        'modelClass' => Question::className()
+                    ],
+                    [
+                        'actions' => ['delete'],
+                        'allow' => true,
+                        'roles' => [Question::PERMISSION_DELETE, Question::PERMISSION_DELETE_OWN],
+                        'modelClass' => Question::className()
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

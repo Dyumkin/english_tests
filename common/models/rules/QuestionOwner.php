@@ -17,6 +17,6 @@ class QuestionOwner extends Rule
      */
     public function execute($userId, $item, $params)
     {
-        return isset($params['question']) ? $params['question']->created_by == $userId : false;
+        return isset($params['model']) ? $params['model']->created_by == $userId : false;
     }
 }

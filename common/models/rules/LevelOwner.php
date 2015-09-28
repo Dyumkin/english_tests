@@ -17,6 +17,6 @@ class LevelOwner extends Rule
      */
     public function execute($userId, $item, $params)
     {
-        return isset($params['level']) ? $params['level']->created_by == $userId : false;
+        return isset($params['model']) ? $params['model']->created_by == $userId : false;
     }
 }
