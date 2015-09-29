@@ -30,7 +30,7 @@ use backend\widgets\WLang;
             <span> <!--<a href="/logout" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a>-->
             <?= \yii\helpers\Html::a('<i class="fa fa-sign-out"></i>', '/site/logout', [
                 'data-action' => 'userLogout',
-                'data-logout-msg' => 'You can improve your security further after logging out by closing this opened browser',
+                'data-logout-msg' => Yii::t('back', 'You can improve your security further after logging out by closing this opened browser'),
                 'title' => 'Sign Out'
             ]); ?>
             </span>

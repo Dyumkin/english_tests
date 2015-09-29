@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\filters\AccessRule;
+use common\models\User;
 use Yii;
 use common\models\question\Question;
 use common\models\search\QuestionSearch;
@@ -28,7 +29,7 @@ class QuestionController extends Controller
                     [
                         'actions' => ['index'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => [User::ROLE_ADMIN, User::ROLE_CLIENT],
                     ],
                     [
                         'actions' => ['create'],

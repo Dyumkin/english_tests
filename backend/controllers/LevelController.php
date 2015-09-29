@@ -5,6 +5,7 @@ namespace backend\controllers;
 use common\filters\AccessRule;
 use common\models\Lang;
 use common\models\LevelI18n;
+use common\models\User;
 use Yii;
 use common\models\Level;
 use yii\base\Model;
@@ -29,7 +30,7 @@ class LevelController extends Controller
                     [
                         'actions' => ['index'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => [User::ROLE_ADMIN, User::ROLE_CLIENT],
                     ],
                     [
                         'actions' => ['create'],
@@ -104,7 +105,7 @@ class LevelController extends Controller
         $hasError = false;
 
         /** @var Lang $lang */
-        foreach (Lang::find()->all() as $lang) {
+        foreach (Lang::find()->each() as $lang) {
             $modelI18ns[] = new LevelI18n(['lang_id' => $lang->id]);
         }
 

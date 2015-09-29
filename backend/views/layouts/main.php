@@ -13,7 +13,7 @@ if (Yii::$app->controller->action->id === 'login') {
 }
 $assetsPath = '';
 
-// register smartadmin UI plugins
+// register smartadmin UI plugins todo remove this
 SmartUI::register('widget', 'backend\components\smartui\Widget');
 SmartUI::register('datatable', 'backend\components\smartui\DataTable');
 SmartUI::register('button', 'backend\components\smartui\Button');

@@ -42,7 +42,7 @@ class SignInForm extends Model {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect email or password.');
+                $this->addError($attribute, Yii::t('back','Incorrect email or password.'));
             }
         }
     }
@@ -56,7 +56,7 @@ class SignInForm extends Model {
     {
         if ($this->validate()) {
             if (!$this->getUser()->getIsAdmin()) {
-                $this->addError('email', 'Permission Denied');
+                $this->addError('email', Yii::t('back','Permission Denied'));
                 return false;
             }
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
@@ -81,9 +81,9 @@ class SignInForm extends Model {
 
     public function attributeLabels() {
         return [
-            'email' => 'E-mail',
-            'password' => 'Password',
-            'rememberMe' => 'Stay signed in'
+            'email' => Yii::t('back','E-mail'),
+            'password' => Yii::t('back','Password'),
+            'rememberMe' => Yii::t('back','Stay signed in')
         ];
     }
 } 

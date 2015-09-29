@@ -20,6 +20,10 @@ return [
                     'class' => 'yii\i18n\DbMessageSource',
                     'sourceLanguage' => 'en',
                 ],
+                'back' => [
+                    'class' => 'yii\i18n\DbMessageSource',
+                    'sourceLanguage' => 'en',
+                ],
             ],
         ]
     ],
