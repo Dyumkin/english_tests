@@ -6,7 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "question_simple".
+ * This is the model class for table "question_multiple_choice".
  *
  * @property integer $id
  * @property integer $question_id
@@ -14,25 +14,21 @@ use yii\db\ActiveRecord;
  * @property integer $active
  * @property integer $difficult
  * @property string $text
- * @property array $options
+ * @property string $options
  * @property integer $correct
- * @property array $explanation
+ * @property string $explanation
  *
- * @property Question $question
  * @property QuestionLang $qlang
+ * @property Question $question
  */
-class QuestionSimple extends ActiveRecord implements iQuestion
+class QuestionMultipleChoice extends ActiveRecord implements iQuestion
 {
-
-    const STATUS_ACTIVE = 1;
-    const STATUS_INACTIVE = 0;
-
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'question_simple';
+        return 'question_multiple_choice';
     }
 
     /**
@@ -42,11 +38,11 @@ class QuestionSimple extends ActiveRecord implements iQuestion
     {
         return [
             [['text', 'correct'], 'required'],
-            [['question_id', 'active', 'difficult', 'correct', 'qlang_id'], 'integer'],
+            [['question_id', 'qlang_id', 'active', 'difficult'], 'integer'],
             [['text'], 'string'],
-            [['options', 'explanation'], 'each', 'rule' => ['string']],
-            [['question_id'], 'exist', 'skipOnError' => true, 'targetClass' => Question::className(), 'targetAttribute' => ['question_id' => 'id']],
+            [['options', 'explanation', 'correct'], 'each', 'rule' => ['string']],
             [['qlang_id'], 'exist', 'skipOnError' => true, 'targetClass' => QuestionLang::className(), 'targetAttribute' => ['qlang_id' => 'id']],
+            [['question_id'], 'exist', 'skipOnError' => true, 'targetClass' => Question::className(), 'targetAttribute' => ['question_id' => 'id']],
         ];
     }
 
@@ -56,6 +52,7 @@ class QuestionSimple extends ActiveRecord implements iQuestion
     public function attributeLabels()
     {
         return [
+            'qlang_id' => Yii::t('app', 'Qlang ID'),
             'active' => Yii::t('app', 'Active'),
             'difficult' => Yii::t('app', 'Difficult'),
             'text' => Yii::t('app', 'Text'),
@@ -68,19 +65,22 @@ class QuestionSimple extends ActiveRecord implements iQuestion
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getQlang()
+    {
+        return $this->hasOne(QuestionLang::className(), ['id' => 'qlang_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getQuestion()
     {
         return $this->hasOne(Question::className(), ['id' => 'question_id']);
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @inheritdoc
      */
-    public function getQlang()
-    {
-        return $this->hasOne(QuestionLang::className(), ['id' => 'qlang_id']);
-    }
-
     public function beforeSave($insert)
     {
         if (!parent::beforeSave($insert)) {
@@ -95,15 +95,23 @@ class QuestionSimple extends ActiveRecord implements iQuestion
             $this->explanation = json_encode($this->explanation);
         }
 
+        if ($this->correct){
+            $this->correct = json_encode($this->correct);
+        }
+
         return true;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function afterFind()
     {
         parent::afterFind();
 
         $this->options = json_decode($this->options, true);
         $this->explanation = json_decode($this->explanation, true);
+        $this->correct = json_decode($this->correct, true);
     }
 
     public function getOptions()
@@ -113,11 +121,11 @@ class QuestionSimple extends ActiveRecord implements iQuestion
 
     public function getType()
     {
-        return Question::TYPE_SIMPLE;
+        return Question::TYPE_MULTIPLE_CHOICE;
     }
 
     public static function getRelationName()
     {
-        return 'questionSimple';
+        return 'questionMultiChoices';
     }
 }

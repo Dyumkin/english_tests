@@ -6,7 +6,7 @@ use yii\db\ActiveRecordInterface;
 interface iQuestion extends ActiveRecordInterface
 {
 
-    public function getRelationName();
+    public static function getRelationName();
 
     public function getOptions();
 

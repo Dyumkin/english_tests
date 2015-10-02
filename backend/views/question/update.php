@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
             'editbutton' => false,
             'sortable' => false,
             'colorbutton' => false,
-            'header' => 'Create',
+            'header' => 'Update',
             'icon' => Html::icon(Html::ICON_FA_EDIT),
             'body'   => $this->render('_' . $question->getType(), [
                 'model' => $model, 'question' => $question

@@ -10,7 +10,9 @@ class m150915_190628_level extends Migration
         $this->createTable('{{level}}', [
             'id' => $this->primaryKey(),
             'date_update' => $this->integer()->notNull(),
-            'date_create' => $this->integer()->notNull()
+            'date_create' => $this->integer()->notNull(),
+            'created_by' => $this->integer()->notNull(),
+            'updated_by' => $this->integer()->notNull()
         ]);
 
         $this->createTable('{{level_I18N}}', [
@@ -23,10 +25,14 @@ class m150915_190628_level extends Migration
 
         $this->addForeignKey('fk_level_i18n', '{{level_I18N}}', 'level_id', '{{level}}', 'id', 'CASCADE');
         $this->addForeignKey('fk_level_lang', '{{level_I18N}}', 'lang_id', '{{lang}}', 'id', 'RESTRICT');
+        $this->addForeignKey('fk_level_user', '{{level}}', 'created_by', '{{user}}', 'id', 'RESTRICT');
+        $this->addForeignKey('fk_level_user_update', '{{level}}', 'updated_by', '{{user}}', 'id', 'RESTRICT');
     }
 
     public function down()
     {
+        $this->dropForeignKey('fk_level_user_update', '{{level}}');
+        $this->dropForeignKey('fk_level_user', '{{level}}');
         $this->dropForeignKey('fk_level_lang', '{{level_I18N}}');
         $this->dropForeignKey('fk_level_i18n', '{{level_I18N}}');
         $this->dropTable('{{level}}');

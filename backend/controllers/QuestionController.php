@@ -135,10 +135,12 @@ class QuestionController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $relation = 'question' . ucfirst($model->type);
+
+        /** @var iQuestion $class */
+        $class = Question::getRelationClassNames()[$model->type];
 
         /** @var iQuestion|ActiveRecord $question */
-        $question = $model->{$relation};
+        $question = $model->{$class::getRelationName()};
 
         if ($model->load(Yii::$app->request->post()) && $question->load(Yii::$app->request->post())) {
             if ($model->validate() && $question->validate()) {
@@ -149,7 +151,7 @@ class QuestionController extends Controller
             }
         }
 
-        return $this->render('create', [
+        return $this->render('update', [
             'model' => $model,
             'question' => $question,
         ]);

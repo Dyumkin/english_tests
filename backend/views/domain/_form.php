@@ -51,19 +51,15 @@ $items['navType'] = 'nav-tabs bordered';
 
 <fieldset>
     <div class="row">
-        <section class="col col-3">
-            <?= $form->field($model, 'type')->dropDownList(Question::getTypes()) ?>
-        </section>
-
-        <section class="col col-3">
+        <section class="col col-4">
             <?= $form->field($model, 'timer')->textInput() ?>
         </section>
 
-        <section class="col col-3">
+        <section class="col col-4">
             <?= $form->field($model, 'level_id')->dropDownList(Level::getLevels()) ?>
         </section>
 
-        <section class="col col-3">
+        <section class="col col-4">
             <?= $form->field($model, 'domain_id')->dropDownList(Domain::getDomainsData()) ?>
         </section>
     </div>

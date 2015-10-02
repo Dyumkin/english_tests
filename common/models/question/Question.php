@@ -25,6 +25,7 @@ use yii\behaviors\BlameableBehavior;
  * @property User $createdBy
  * @property User $updatedBy
  * @property QuestionSimple $questionSimple
+ * @property QuestionMultipleChoice $questionMultiChoices
  */
 class Question extends ActiveRecord
 {
@@ -61,8 +62,8 @@ class Question extends ActiveRecord
         $namespace = 'common\models\question';
 
         return [
-            self::TYPE_SIMPLE => $namespace . '\QuestionSimple',
-            self::TYPE_MULTIPLE_CHOICE => $namespace . '\QuestionMultipleChoice',
+            self::TYPE_SIMPLE => QuestionSimple::className(),
+            self::TYPE_MULTIPLE_CHOICE => QuestionMultipleChoice::className(),
             self::TYPE_ALTERNATIVE_CHOICE => $namespace . '\QuestionAlternativeChoice',
             /*self::TYPE_MATCHING => $namespace . '\QuestionSimple',
             self::TYPE_REARRANGEMENT => $namespace . '\QuestionSimple',*/
@@ -136,7 +137,15 @@ class Question extends ActiveRecord
      */
     public function getQuestionSimple()
     {
-        return $this->hasOne(QuestionSimple::className(), ['question_id' => 'id']);
+        return $this->hasOne(QuestionSimple::className(), ['question_id' => 'id']); //todo has many
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getQuestionMultiChoices()
+    {
+        return $this->hasOne(QuestionMultipleChoice::className(), ['question_id' => 'id']); //todo has many
     }
 
     public function behaviors()

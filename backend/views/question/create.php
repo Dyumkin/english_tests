@@ -2,13 +2,14 @@
 
 use backend\components\smartform\Html;
 use backend\components\smartform\Jarvis;
+use common\models\question\Question;
 
 
 /* @var $this yii\web\View */
 /* @var $model common\models\question\Question */
 /* @var $question common\models\question\iQuestion */
 
-$this->title = Yii::t('app', 'Create {type}', ['type' => $question->getType()]);
+$this->title = Yii::t('app', 'Create {type}', ['type' => Question::getTypes()[$question->getType()]]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Questions'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -10,9 +10,9 @@ use backend\components\smartform\Jarvis;
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
     'modelClass' => 'Domain',
-]) . ' ' . $model->id;
+]) . ' ' . $model->content->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Domains'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->content->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
             'editbutton' => false,
             'sortable' => false,
             'colorbutton' => false,
-            'header' => 'Create',
+            'header' => 'Update',
             'icon' => Html::icon(Html::ICON_FA_EDIT),
             'body'   => $this->render('_form', [
                 'model' => $model, 'modelI18ns' => $modelI18ns, 'hasError' => $hasError

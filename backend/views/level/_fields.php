@@ -16,12 +16,7 @@ use backend\components\smartform\Html;
         </section>
     </div>
 
-    <div class="row">
-        <section class="col col-10">
-            <?= $form->field($model, '[' . $i . ']description')->textarea(['rows' => 6]) ?>
-        </section>
-    </div>
-
+    <?= $form->field($model, '[' . $i . ']description')->textarea(['rows' => 6]) ?>
 </fieldset>
 
 <footer>

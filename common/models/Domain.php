@@ -14,7 +14,6 @@ use yii\db\ActiveRecord;
  * @property integer $level_id
  * @property integer $update_at
  * @property integer $create_at
- * @property string $type
  * @property integer $status
  * @property integer $is_trial
  * @property integer $timer
@@ -57,8 +56,7 @@ class Domain extends ActiveRecord
     {
         return [
             [['update_at', 'create_at', 'status', 'is_trial', 'timer','created_by', 'updated_by'], 'integer'],
-            [['type', 'level_id', 'timer'], 'required'],
-            [['type'], 'string', 'max' => 255],
+            [['level_id', 'timer'], 'required'],
             [['domain_id'], 'exist', 'skipOnError' => true, 'targetClass' => Domain::className(), 'targetAttribute' => ['domain_id' => 'id']],
             [['level_id'], 'exist', 'skipOnError' => true, 'targetClass' => Level::className(), 'targetAttribute' => ['level_id' => 'id']],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
@@ -76,7 +74,6 @@ class Domain extends ActiveRecord
             'domain_id'  => Yii::t('app', 'Parent Domain'),
             'update_at' => Yii::t('app', 'Update At'),
             'create_at' => Yii::t('app', 'Create At'),
-            'type' => Yii::t('app', 'Type'),
             'status' => Yii::t('app', 'Active'),
             'is_trial' => Yii::t('app', 'Is Trial'),
             'timer' => Yii::t('app', 'Timer'),

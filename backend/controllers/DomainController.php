@@ -148,7 +148,7 @@ class DomainController extends Controller
             $hasError = true;
         }
 
-        return $this->render('create', [
+        return $this->render('update', [
             'model' => $model,
             'modelI18ns' => $modelI18ns,
             'hasError' => $hasError

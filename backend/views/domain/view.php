@@ -16,7 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'update_at:datetime',
             'create_at:datetime',
-            'type',
             'status',
             'is_trial',
             'timer',

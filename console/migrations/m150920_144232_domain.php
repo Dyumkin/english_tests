@@ -12,10 +12,11 @@ class m150920_144232_domain extends Migration
             'level_id' => $this->integer(),
             'update_at' => $this->integer()->notNull(),
             'create_at' => $this->integer()->notNull(),
-            'type' => $this->string()->notNull(),
             'status' => $this->integer(1)->notNull()->defaultValue(0),
             'is_trial' => $this->integer(1)->notNull()->defaultValue(0),
-            'timer' => $this->integer()->notNull()->defaultValue(0)
+            'timer' => $this->integer()->notNull()->defaultValue(0),
+            'created_by' => $this->integer()->notNull(),
+            'updated_by' => $this->integer()->notNull()
         ]);
 
         $this->createTable('{{domain_I18N}}', [
@@ -30,10 +31,14 @@ class m150920_144232_domain extends Migration
         $this->addForeignKey('fk_domain_i18n', '{{domain_I18N}}', 'domain_id', '{{domain}}', 'id', 'CASCADE');
         $this->addForeignKey('fk_domain_domain', '{{domain}}', 'domain_id', '{{domain}}', 'id');
         $this->addForeignKey('fk_domain_lang', '{{domain_I18N}}', 'lang_id', '{{lang}}', 'id', 'RESTRICT');
+        $this->addForeignKey('fk_domain_user', '{{domain}}', 'created_by', '{{user}}', 'id', 'RESTRICT');
+        $this->addForeignKey('fk_domain_user_update', '{{domain}}', 'updated_by', '{{user}}', 'id', 'RESTRICT');
     }
 
     public function down()
     {
+        $this->dropForeignKey('fk_domain_user_update', '{{domain}}');
+        $this->dropForeignKey('fk_domain_user', '{{domain}}');
         $this->dropForeignKey('fk_domain_level', '{{domain}}');
         $this->dropForeignKey('fk_domain_lang', '{{domain_I18N}}');
         $this->dropForeignKey('fk_domain_domain', '{{domain}}');
