@@ -19,6 +19,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <!--<script type="text/javascript" src="/js/require.js"></script>-->
     <?php $this->head() ?>
 </head>
 <body>

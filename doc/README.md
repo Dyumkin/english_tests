@@ -8,3 +8,8 @@ Install
 
 3. composer install
 4. composer update --dev
+
+Commands
+========
+
+node tools/r.js -o tools/build.js

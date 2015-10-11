@@ -47,6 +47,10 @@ return [
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>'
             ]
         ],
+
+        /*'view' => [
+            'class' => 'frontend\components\View',
+        ]*/
     ],
     'modules'=>[
         'user' => [

@@ -8,6 +8,8 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
+\frontend\assets\TestAsset::register($this);
+//$this->registerJsFile('@web/built/lib/require.js', ['data-main' => '/built/page1', 'position' => \yii\web\View::POS_HEAD]);
 ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>

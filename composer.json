@@ -30,7 +30,8 @@
         "bower-asset/kapusta-jquery.sparkline": "*",
         "bower-asset/jquery-maskedinputs": "*",
         "bower-asset/select2": "*",
-        "bower-asset/seiyria-bootstrap-slider": "*"
+        "bower-asset/seiyria-bootstrap-slider": "*",
+        "npm-asset/requirejs": "2.1.20"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
